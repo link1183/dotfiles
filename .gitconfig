@@ -6,3 +6,5 @@
 	ui = true
 [init]
 	defaultBranch = main
+[user]
+	email = adrien.gunther@gmail.com
