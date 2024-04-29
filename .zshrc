@@ -114,6 +114,7 @@ alias cd="z"
 alias cdi="zi"
 alias ls='colorls'
 alias cat="/usr/bin/batcat" 
+alias vim="nvim"
 
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -121,3 +122,8 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 source /home/agunthe1/projects/app/frontend/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if command -v tmux>/dev/null; then
+ [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && tmux
+fi
+
