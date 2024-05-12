@@ -24,3 +24,11 @@
 	stripLeadingSymbols = false
 	useUnicodeRuler = false
 	rulerWidth = 80
+[rerere]
+	enabled = true
+[column]
+	ui = auto
+[branch]
+	sort = --committerdate
+[maintenance]
+	repo = /home/agunthe1/projects/app/backend
