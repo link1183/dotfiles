@@ -1,5 +1,6 @@
 [user]
-	email = adrien.gunther@gmail.com
+  email = adrien.gunther@gmail.com
+  name = link1183
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RF
 [interactive]
@@ -32,3 +33,6 @@
 	sort = --committerdate
 [maintenance]
 	repo = /home/agunthe1/projects/app/backend
+	repo = /home/agunthe1/projects/app/frontend
+[init]
+	defaultBranch = main
