@@ -1,0 +1,41 @@
+import = ["~/.config/alacritty/catppuccin-macchiato.toml"]
+
+live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+decorations = "None"
+startup_mode = "Windowed"
+title = "Terminal"
+dynamic_title = true
+opacity = 1.0
+
+[font]
+size = 9.0
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Heavy"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Heavy Italic"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Medium Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Medium"
+
+[selection]
+save_to_clipboard = true
+
+[cursor]
+unfocused_hollow = true
+
+[mouse]
+hide_when_typing = true
