@@ -27,6 +27,7 @@ source $HOME/.profile
 source $ZSH/oh-my-zsh.sh
 source $(dirname $(gem which colorls))/tab_complete.sh
 eval "$(oh-my-posh init zsh --config $OHMYPOSH/config.toml)"
+eval $(thefuck --alias)
 
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
@@ -56,3 +57,5 @@ alias cd.='z ..'
 alias cd..='z ../..'
 alias cd...='z ../../..'
 alias cd....='z ../../../..'
+
+alias ga.='ga .'

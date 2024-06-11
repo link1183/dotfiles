@@ -39,11 +39,21 @@ type = 'rprompt'
 overflow = 'hidden'
 
 [[blocks.segments]]
+type = "time"
+style = "plain"
+template = "{{ .CurrentDate | date .Format }}"
+
+[[blocks.segments]]
 type = 'executiontime'
 style = 'plain'
 foreground = 'yellow'
 background = 'transparent'
 template = '{{ .FormattedMs }}'
+
+[[blocks.segments]]
+type = "python"
+style = "plain"
+template = "  {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}"
 
 [blocks.segments.properties]
 threshold = 5000
