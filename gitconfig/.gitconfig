@@ -34,5 +34,6 @@
 [maintenance]
 	repo = /home/agunthe1/projects/app/backend
 	repo = /home/agunthe1/projects/app/frontend
+  repo = /home/agunthe1/.dotfiles
 [init]
 	defaultBranch = main
