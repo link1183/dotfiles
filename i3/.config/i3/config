@@ -215,10 +215,10 @@ client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 
 # Wallpaper
-exec_always feh --bg-fill /home/agunthe1/Documents/wallpapers/wolf_link.jpg
+exec_always feh --bg-fill $HOME/Documents/wallpapers/wolf_link.jpg
 
 # Shortcut for Lockscreen
-set $Locker /home/$USER/.config/scripts/lock.sh
+set $Locker $HOME/.config/i3/scripts/lock.sh
 bindsym $mod+x exec $Locker
 
 # Logout and stuff mode
@@ -242,8 +242,13 @@ exec_always --no-startup-id picom &
 exec --no-startup-id xss-lock -- ~/.config/i3/scripts/lock.sh
 default_border none
 
+exec --no-startup-id mate-power-manager
+
 # No border for the apps
 default_floating_border none
+
+# Open Flameshot GUI with Print Screen key
+bindsym Print exec --no-startup-id flameshot gui
 
 # Script to set our screen settings
 exec --no-startup-id xrandr --output DP-0 --mode 1920x1080 --rate 144.00 --pos 3840x0 --rotate normal \

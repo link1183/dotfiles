@@ -1,10 +1,17 @@
 #!/usr/bin/env zsh
-if [[ -z $STOW_FOLDERS ]]; then
-    STOW_FOLDERS="home,.config"
-fi
 
+# Set DOTFILES variable
 if [[ -z $DOTFILES ]]; then
     DOTFILES=$HOME/.dotfiles
 fi
 
+# Fetch all directories in ~/.dotfiles/ excluding .git
+STOW_FOLDERS=$(find "$DOTFILES" -mindepth 1 -maxdepth 1 -type d ! -name '.git' -exec basename {} \; | paste -sd "," -)
+
+# Default STOW_FOLDERS if not set
+if [[ -z $STOW_FOLDERS ]]; then
+    STOW_FOLDERS="alacritty,gitconfig,i3,nvim,oh-my-posh,profile,tmux,zshrc"
+fi
+
+# Execute the installation script
 STOW_FOLDERS=$STOW_FOLDERS DOTFILES=$DOTFILES $DOTFILES/install

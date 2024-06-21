@@ -41,14 +41,14 @@ overflow = 'hidden'
 [[blocks.segments]]
 type = "time"
 style = "plain"
-template = "{{ .CurrentDate | date .Format }}"
+template = " {{ .CurrentDate | date .Format }}"
 
 [[blocks.segments]]
 type = 'executiontime'
 style = 'plain'
 foreground = 'yellow'
 background = 'transparent'
-template = '{{ .FormattedMs }}'
+template = ' {{ .FormattedMs }}'
 
 [[blocks.segments]]
 type = "python"
