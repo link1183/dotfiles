@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# Some useful options
-setopt autocd extendedglob nomatch menucomplete
-setopt interactive_comments
-stty stop undef
-zle_highlight=('paste:none')

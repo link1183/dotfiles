@@ -1,0 +1,3 @@
+#!/bin/bash
+# Run the following file to export all installed packages (requires yay to be installed).
+yay -Q | awk '{print $1}' > packages.txt

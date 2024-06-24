@@ -12,13 +12,13 @@ HISTFILE=~/.zsh_history
 plug "$HOME/.config/zsh/aliases.zsh"
 plug "$HOME/.config/zsh/exports.zsh"
 plug "$HOME/.config/zsh/functions.zsh"
+plug "$HOME/.config/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh"
 
 # plugins
 plug "esc/conda-zsh-completion"
 plug "zsh-users/zsh-autosuggestions"
 plug "hlissner/zsh-autopair"
 plug "zap-zsh/supercharge"
-plug "zap-zsh/vim"
 plug "zap-zsh/fzf"
 plug "Aloxaf/fzf-tab"
 plug "zap-zsh/exa"
@@ -43,7 +43,6 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 # oh-my-posh prompt
 eval "$(oh-my-posh init zsh --config $OHMYPOSH/config.toml)"
-zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 eval $(thefuck --alias)
 eval "$(tmuxifier init -)"
@@ -51,6 +50,5 @@ eval "$(zoxide init zsh)"
 
 . "$HOME/.cargo/env"
 
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
