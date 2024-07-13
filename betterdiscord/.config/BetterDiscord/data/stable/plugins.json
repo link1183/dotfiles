@@ -6,16 +6,20 @@
     "CompleteTimestamps": true,
     "FreeEmojis": true,
     "GameActivityToggle": true,
-    "InvisibleTyping": true,
+    "InvisibleTyping": false,
     "OnlineFriendCount": true,
     "PluginRepo": true,
     "QuickMention": true,
     "ReadAllNotificationsButton": true,
     "ServerCounter": true,
-    "ServerDetails": true,
+    "ServerDetails": false,
     "SplitLargeMessages": true,
     "SpotifyControls": true,
     "ThemeRepo": true,
     "ZeresPluginLibrary": true,
-    "BDFDB": true
+    "BDFDB": true,
+    "ActivityIcons": false,
+    "BetterAnimations": true,
+    "BetterAudioPlayer": true,
+    "BetterImageViewer": true
 }

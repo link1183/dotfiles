@@ -2,7 +2,7 @@
  * @name BDFDB
  * @author DevilBro
  * @authorId 278543574059057154
- * @version 3.7.2
+ * @version 3.7.6
  * @description Required Library for DevilBro's Plugins
  * @invite Jx3TjNS
  * @donate https://www.paypal.me/MircoWittrien
@@ -28,7 +28,7 @@ module.exports = (_ => {
 		started: true,
 		changeLog: {
 			"fixed": {
-				"A lot of Plugin Issues": "Library should be stable again and Plugins should be running again, there will be some Issues with Plugins not working properly yet, let me know if you catch a bug"
+				"Lags": "Fixed some Issues with Lags, noticable in FriendNotifications for example"
 			}
 		}
 	};
@@ -4416,7 +4416,7 @@ module.exports = (_ => {
 						let LayersProviderIns = BDFDB.ReactUtils.findOwner(document.querySelector(BDFDB.dotCN.layers), {name: "LayersProvider", unlimited: true, up: true});
 						let LayersProviderType = LayersProviderIns && BDFDB.ObjectUtils.get(LayersProviderIns, `${BDFDB.ReactUtils.instanceKey}.type`);
 						if (!LayersProviderType) return;
-						let parentSelector = "", notices = document.querySelector("#bd-notices:has(#outdated-plugins)");
+						let parentSelector = "", notices = document.querySelector("#bd-notices");
 						if (notices) {
 							let parentClasses = []
 							for (let i = 0, parent = notices.parentElement; i < 3; i++, parent = parent.parentElement) parentClasses.push(parent.className);
@@ -4430,7 +4430,7 @@ module.exports = (_ => {
 									let parent = document.querySelector(parentSelector) || document.querySelector(BDFDB.dotCN.app).parentElement;
 									if (parent) {
 										parent.insertBefore(notices, parent.firstElementChild);
-										let ZeresPluginLibrary = BDFDB.BDUtils.getPlugin("ZeresPluginLibrary");
+										let ZeresPluginLibrary = notices.querySelector("#outdated-plugins") && BDFDB.BDUtils.getPlugin("ZeresPluginLibrary");
 										let updateChecker = ZeresPluginLibrary && ZeresPluginLibrary?.Library?.PluginUpdater?.checkAllPlugins;
 										if (typeof updateChecker == "function") updateChecker.apply(ZeresPluginLibrary.Library.PluginUpdater);
 									}
@@ -4456,7 +4456,7 @@ module.exports = (_ => {
 				const DiscordClasses = Object.assign({}, InternalData.DiscordClasses);
 				BDFDB.DiscordClasses = Object.assign({}, DiscordClasses);
 				Internal.getDiscordClass = function (item, selector) {
-					let className, fallbackClassName;
+					let className, fallbackClassName, notFoundAndLazyloaded = false;
 					className = fallbackClassName = Internal.DiscordClassModules.BDFDB.BDFDBundefined + "_" + Internal.generateClassId();
 					if (DiscordClasses[item] === undefined) {
 						BDFDB.LogUtils.warn([item, "not found in DiscordClasses"]);
@@ -4467,25 +4467,33 @@ module.exports = (_ => {
 						return className;
 					}
 					else if (Internal.DiscordClassModules[DiscordClasses[item][0]] === undefined) {
-						BDFDB.LogUtils.warn([DiscordClasses[item][0], "not found in DiscordClassModules"]);
-						return className;
+						if (!InternalData.LazyloadedClassModules || !InternalData.LazyloadedClassModules[DiscordClasses[item][0]]) {
+							BDFDB.LogUtils.warn([DiscordClasses[item][0], "not found in DiscordClassModules"]);
+							return className;
+						}
+						else notFoundAndLazyloaded = true;
 					}
 					else if ([DiscordClasses[item][1]].flat().every(prop => Internal.DiscordClassModules[DiscordClasses[item][0]][prop] === undefined && !(JSON.stringify(Internal.DiscordClassModules[DiscordClasses[item][0]]).split(" ").find(n => n.startsWith(`${prop}_`)) || "").split("\"")[0])) {
-						BDFDB.LogUtils.warn([DiscordClasses[item][1], "not found in", DiscordClasses[item][0], "in DiscordClassModules"]);
-						return className;
-					}
-					else {
-						for (let prop of [DiscordClasses[item][1]].flat()) {
-							className = Internal.DiscordClassModules[DiscordClasses[item][0]][prop] || (JSON.stringify(Internal.DiscordClassModules[DiscordClasses[item][0]]).split(" ").find(n => n.startsWith(`${prop}_`)) || "").split("\"")[0];
-							if (className) break;
-							else className = fallbackClassName;
+						if (!InternalData.LazyloadedClassModules || !InternalData.LazyloadedClassModules[DiscordClasses[item][0]]) {
+							BDFDB.LogUtils.warn([DiscordClasses[item][1], "not found in", DiscordClasses[item][0], "in DiscordClassModules"]);
+							return className;
 						}
-						if (selector) {
-							className = className.split(" ").filter(n => n.indexOf("da-") != 0).join(selector ? "." : " ");
-							className = className || fallbackClassName;
-						}
-						return BDFDB.ArrayUtils.removeCopies(className.split(" ")).join(" ") || fallbackClassName;
+						else notFoundAndLazyloaded = true;
 					}
+					if (notFoundAndLazyloaded) {
+						className = `${DiscordClasses[item][1]}_${InternalData.LazyloadedClassModules[DiscordClasses[item][0]]}`;
+						DiscordClassModules[DiscordClasses[item][0]] = Object.assign({}, DiscordClassModules[item], {[DiscordClasses[item][1]]: className});
+					}
+					else for (let prop of [DiscordClasses[item][1]].flat()) {
+						className = Internal.DiscordClassModules[DiscordClasses[item][0]][prop] || (JSON.stringify(Internal.DiscordClassModules[DiscordClasses[item][0]]).split(" ").find(n => n.startsWith(`${prop}_`)) || "").split("\"")[0];
+						if (className) break;
+						else className = fallbackClassName;
+					}
+					if (selector) {
+						className = className.split(" ").filter(n => n.indexOf("da-") != 0).join(selector ? "." : " ");
+						className = className || fallbackClassName;
+					}
+					return BDFDB.ArrayUtils.removeCopies(className.split(" ")).join(" ") || fallbackClassName;
 				};
 				const generationChars = "0123456789ABCDEFGHIJKMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_-".split("");
 				Internal.generateClassId = function () {
@@ -5206,6 +5214,7 @@ module.exports = (_ => {
 										borderColor: this.props.checkboxColor
 									}, this.getStyle()),
 									children: BDFDB.ReactUtils.createElement(Internal.LibraryComponents.Checkmark, {
+										size: "null",
 										width: 18,
 										height: 18,
 										color: this.getColor(),
@@ -7173,7 +7182,7 @@ module.exports = (_ => {
 						if (list && !this.props.configWidth) {
 							let headers = Array.from(list.querySelectorAll(BDFDB.dotCN.settingstableheader));
 							headers.shift();
-							if (BDFDB.DOMUtils.getRects(headers[0]).width == 0) BDFDB.TimeUtils.timeout(_ => {this.resizeList(headers);});
+							if (BDFDB.DOMUtils.getRects(headers[0]).width == 0) BDFDB.TimeUtils.timeout(_ => this.resizeList(headers));
 							else this.resizeList(headers);
 						}
 					}
@@ -7267,7 +7276,7 @@ module.exports = (_ => {
 							} : {},
 							children: [
 								this.renderHeaderOption({
-									className: BDFDB.disCN.settingstableheadername,
+									className: BDFDB.DOMUtils.formatClassName(BDFDB.disCN.settingstableheadername, BDFDB.disCN.settingstableheader),
 									clickable: this.props.title && isHeaderClickable,
 									label: this.props.title || ""
 								}),
@@ -7279,7 +7288,7 @@ module.exports = (_ => {
 										maxWidth: wrapperWidth || null
 									},
 									children: this.props.settings.map(setting => this.renderHeaderOption({
-										className: BDFDB.DOMUtils.formatClassName(BDFDB.disCN.settingstableheaderoption, this.props.vertical && BDFDB.disCN.settingstableheadervertical),
+										className: BDFDB.DOMUtils.formatClassName(BDFDB.disCN.settingstableheaderoption, BDFDB.disCN.settingstableheader, this.props.vertical && BDFDB.disCN.settingstableheadervertical),
 										clickable: isHeaderClickable,
 										label: setting
 									}))
@@ -7601,6 +7610,8 @@ module.exports = (_ => {
 							onItemSelect: this.handleItemSelect.bind(this),
 							children: items.map(data => BDFDB.ReactUtils.createElement(Internal.LibraryComponents.TabBar.Item, {
 								className: BDFDB.DOMUtils.formatClassName(this.props.itemClassName, selectedItem == data.value && this.props.itemSelectedClassName),
+								color: this.props.color,
+								look: this.props.look,
 								itemType: this.props.type,
 								id: data.value,
 								children: renderItem(data),
@@ -7615,12 +7626,9 @@ module.exports = (_ => {
 					TOP_PILL: "top-pill"
 				};
 				CustomComponents.TabBar.Looks = {
-					0: "GREY",
-					1: "BRAND",
-					2: "CUSTOM",
-					GREY: 0,
-					BRAND: 1,
-					CUSTOM: 2
+					GREY: "grey",
+					BRAND: "brand",
+					CUSTOM: "custom"
 				};
 				
 				CustomComponents.Table = reactInitialized && class BDFDB_Table extends Internal.LibraryModules.React.Component {
@@ -8084,7 +8092,9 @@ module.exports = (_ => {
 					],
 					after: [
 						"DiscordTag",
-						"UserPopoutAvatar"
+						"UserHeaderAvatar",
+						"UserPanelHeader",
+						"UserProfileHeader"
 					],
 					componentDidMount: [
 						"Account",
@@ -8123,7 +8133,7 @@ module.exports = (_ => {
 						}
 					}
 				};
-				Internal._processAvatarRender = function (user, avatar, className) {
+				Internal._processAvatarRender = function (user, avatar, className = "") {
 					if (BDFDB.ReactUtils.isValidElement(avatar) && BDFDB.ObjectUtils.is(user) && (avatar.props.className || "").indexOf(BDFDB.disCN.bdfdbbadgeavatar) == -1) {
 						let role = "", note = "", color, link, addBadge = Internal.settings.general.showSupportBadges;
 						if (BDFDB_Patrons[user.id] && BDFDB_Patrons[user.id].active) {
@@ -8322,10 +8332,19 @@ module.exports = (_ => {
 				Internal.processSearchBar = function (e) {
 					if (typeof e.instance.props.query != "string") e.instance.props.query = "";
 				};
-				Internal.processUserPopoutAvatar = function (e) {
+				Internal.processUserHeaderAvatar = function (e) {
 					if (!e.instance.props.user) return;
-					let [children, index] = BDFDB.ReactUtils.findParent(e.returnvalue, {props: [["className", BDFDB.disCN.userpopoutavatarwrapper]]});
-					if (index > -1) children[index] = Internal._processAvatarRender(e.instance.props.user, children[index], e.instance) || children[index];
+					e.returnvalue = Internal._processAvatarRender(e.instance.props.user, e.returnvalue) || e.returnvalue;
+				};
+				Internal.processUserPanelHeader = function (e) {
+					if (!e.instance.props.user) return;
+					let [children, index] = BDFDB.ReactUtils.findParent(e.returnvalue, {filter: n => n && n.props && n.props.src && n.props.size});
+					if (index > -1) children[index] = Internal._processAvatarRender(e.instance.props.user, children[index]) || children[index];
+				};
+				Internal.processUserProfileHeader = function (e) {
+					if (!e.instance.props.user) return;
+					let [children, index] = BDFDB.ReactUtils.findParent(e.returnvalue, {filter: n => n && n.props && n.props.src && n.props.size});
+					if (index > -1) children[index] = Internal._processAvatarRender(e.instance.props.user, children[index]) || children[index];
 				};
 				
 				MyReact.instanceKey = Object.keys(document.querySelector(BDFDB.dotCN.app) || {}).some(n => n.startsWith("__reactInternalInstance")) ? "_reactInternalFiber" : "_reactInternals";

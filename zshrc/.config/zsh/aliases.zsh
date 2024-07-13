@@ -11,7 +11,9 @@ alias cat="bat"
 alias vim='nvim'
 alias nivm='nvim'
 alias v='nvim'
+alias v.='nvim .'
 alias nvimrc='nvim $HOME/.config/nvim'
+alias nvimrcc='cd $HOME/.config/nvim && nvim $HOME/.config/nvim'
 
 # tmux
 alias t='tmux'
@@ -41,3 +43,6 @@ alias rm='rm -i'
 
 # get top process eating memory
 alias psmem='ps auxf | sort -nr -k 4 | head -5'
+
+# rust
+alias cr='cargo run'

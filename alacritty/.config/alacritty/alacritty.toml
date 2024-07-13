@@ -39,3 +39,12 @@ unfocused_hollow = true
 
 [mouse]
 hide_when_typing = true
+
+[keyboard]
+bindings = [
+  { key = "1", mods = "Control|Shift", action = "IncreaseFontSize" },    # Custom zoom in with Ctrl+Shift+1
+  { key = "Equals", mods = "Control", action = "IncreaseFontSize" },     # Default zoom in with Ctrl+=
+  { key = "Plus", mods = "Control|Shift", action = "IncreaseFontSize" }, # Default zoom in with Ctrl+Shift+=
+  { key = "Minus", mods = "Control", action = "DecreaseFontSize" },      # Default zoom out with Ctrl+-
+  { key = "0", mods = "Control", action = "ResetFontSize" },             # Default reset zoom with Ctrl+0
+]
