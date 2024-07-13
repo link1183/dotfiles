@@ -17,6 +17,9 @@ alias nvimrcc='cd $HOME/.config/nvim && nvim $HOME/.config/nvim'
 
 # tmux
 alias t='tmux'
+alias ta='t attach -t'
+
+alias lgt='lazygit'
 
 # zsh config files sourcing and editing
 alias zshrc='nvim $HOME/.zshrc'
