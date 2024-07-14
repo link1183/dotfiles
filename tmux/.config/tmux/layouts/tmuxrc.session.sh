@@ -6,7 +6,7 @@ session_root "$HOME/.config/tmux/"
 # argument is given, session name will be based on layout file name.
 if initialize_session "tmuxrc"; then
 	new_window "nvim"
-	load_window 1
+	select_window 1
 	run_cmd "v"
 fi
 

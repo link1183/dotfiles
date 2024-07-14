@@ -1,25 +1,27 @@
 alias e='exit'
 alias cls='clear'
-alias rmrf='rm -rf'
+alias rmrf='rm -rfi'
 alias pcupdate='sudo pacman -Syu && yay -Syu'
 
 alias ompupdate='curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/bin'
 
 alias cat="bat"
+alias inv='nvim $(fzf -m --preview="bat --color=always {}")'
 
 # nvim aliases
-alias vim='nvim'
-alias nivm='nvim'
 alias v='nvim'
 alias v.='nvim .'
-alias nvimrc='nvim $HOME/.config/nvim'
-alias nvimrcc='cd $HOME/.config/nvim && nvim $HOME/.config/nvim'
+alias nvimrc='v $HOME/.config/nvim'
+alias nvimrcc='cd $HOME/.config/nvim && v $HOME/.config/nvim'
 
 # tmux
 alias t='tmux'
 alias ta='t attach -t'
+alias tm='tmuxifier s'
 
 alias lgt='lazygit'
+
+alias glog="git log --oneline | fzf --preview 'git show --color=always {+1}' | awk '{print $1}' | xargs -I {} git show {}"
 
 # zsh config files sourcing and editing
 alias zshrc='nvim $HOME/.zshrc'
