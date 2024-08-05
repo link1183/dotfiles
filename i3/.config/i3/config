@@ -21,21 +21,14 @@ exec --no-startup-id xinput set-prop "ELAN067D:00 04F3:3209 Touchpad" "libinput 
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Brightness control
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# move tiling windows via drag & drop by left-clicking into the title bar,
-# or left-clicking anywhere into the window while holding the floating modifier.
-tiling_drag modifier titlebar
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -62,16 +55,30 @@ bindsym $mod+Shift+Right move right
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
 
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+# Logout and stuff mode
+set $mode_system System (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+  bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+p mode "$mode_system"
+
+# Shortcut for Lockscreen
+set $Locker $HOME/.config/i3/scripts/lock.sh
+bindsym $mod+x exec $Locker
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -134,11 +141,6 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-
 # Colors
 set $rosewater #f4dbd6
 set $flamingo #f0c6c6
@@ -175,28 +177,6 @@ client.urgent            $peach    $base $peach $overlay0  $peach
 client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 
-# Wallpaper
-exec_always feh --bg-fill $HOME/Documents/wallpapers/wolf_link.jpg
-
-# Shortcut for Lockscreen
-set $Locker $HOME/.config/i3/scripts/lock.sh
-bindsym $mod+x exec $Locker
-
-# Logout and stuff mode
-set $mode_system System (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-mode "$mode_system" {
-    bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-bindsym $mod+p mode "$mode_system"
 
 # Transparency
 exec_always --no-startup-id picom &
@@ -210,11 +190,15 @@ default_floating_border none
 
 # Open Flameshot GUI with Print Screen key
 bindsym Print exec --no-startup-id flameshot gui
+bindsym ctrl+Home exec --no-startup-id flameshot gui
 
 # Fixing numlock
 exec_always --no-startup-id numlockx on
 
 exec_always --no-startup-id dunst
+
+# Wallpaper
+exec_always feh --bg-fill $HOME/Documents/wallpapers/wolf_link.jpg
 
 # Script to set our screen settings
 exec --no-startup-id xrandr --output DP-0 --mode 1920x1080 --rate 144.00 --pos 3840x0 --rotate normal \
