@@ -1,7 +1,9 @@
 alias e='exit'
 alias cls='clear'
-alias rmrf='rm -rfi'
+alias rmrf='rm -rf'
 alias pcupdate='sudo pacman -Syu && yay -Syu'
+
+alias rpi='ssh agunthe1@rpi.adrieng.ch'
 
 alias ompupdate='curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/bin'
 
@@ -47,7 +49,7 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 # get top process eating memory
-alias psmem='ps auxf | sort -nr -k 4 | head -5'
+alias psmem='ps auxf | sort -nr -k 4 | head -5 | fzf'
 
 # rust
 alias cr='cargo run'

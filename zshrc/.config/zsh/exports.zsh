@@ -1,3 +1,4 @@
+export WEBKIT_DISABLE_DMABUF_RENDERER=1
 export SDKMAN_DIR="$HOME/.sdkman"
 export OHMYPOSH="$HOME/.config/oh-my-posh/"
 export GEM_HOME="$(gem env user_gemhome)"
@@ -16,5 +17,8 @@ export TMUXIFIER_LAYOUT_PATH=$HOME/.config/tmux/layouts/
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 
-export PATH=$HOME/bin:$HOME/.local/bin:/home/linuxbrew/.linuxbrew/bin:$PATH
+export PATH=$HOME/go/bin:$HOME/bin:$HOME/.local/bin:/home/linuxbrew/.linuxbrew/bin:$PATH
 export PATH="$PATH:$GEM_HOME/bin:$HOME/.config/tmux/plugins/tmuxifier/bin/"
+export DEVKITPRO=/opt/devkitpro
+export DEVKITARM=/opt/devkitpro/devkitARM
+export DEVKITPPC=/opt/devkitpro/devkitPPC

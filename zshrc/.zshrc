@@ -56,4 +56,5 @@ eval "$(zoxide init zsh)"
 
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
-
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
