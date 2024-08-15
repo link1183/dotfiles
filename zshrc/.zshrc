@@ -1,7 +1,4 @@
 #!/bin/sh
-# if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
-#   tmux attach || tmux >/dev/null 2>&1
-# fi
 
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
@@ -36,15 +33,6 @@ plug "zap-zsh/sudo"
 plug "kutsan/zsh-system-clipboard"
 plug "wintermi/zsh-rust"
 
-# keybinds
-bindkey '^ ' autosuggest-accept
-
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-
 # oh-my-posh prompt
 eval "$(oh-my-posh init zsh --config $OHMYPOSH/config.toml)"
 
@@ -54,7 +42,7 @@ eval "$(zoxide init zsh)"
 
 . "$HOME/.cargo/env"
 
-zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+zstyle ':fzf-tab:*' fzf-command 
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
