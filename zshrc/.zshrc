@@ -13,6 +13,7 @@ HISTFILE=~/.zsh_history
 plug "$HOME/.config/zsh/aliases.zsh"
 plug "$HOME/.config/zsh/exports.zsh"
 plug "$HOME/.config/zsh/functions.zsh"
+# plug "$HOME/.config/zsh/comp.zsh"
 plug "$HOME/.config/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh"
 
 # plugins
@@ -39,6 +40,7 @@ eval "$(oh-my-posh init zsh --config $OHMYPOSH/config.toml)"
 eval $(thefuck --alias)
 eval "$(tmuxifier init -)"
 eval "$(zoxide init zsh)"
+eval "$(direnv hook zsh)"
 
 . "$HOME/.cargo/env"
 
