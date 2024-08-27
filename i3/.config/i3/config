@@ -202,6 +202,8 @@ exec_always --no-startup-id dunst
 # Wallpaper
 exec_always feh --bg-fill $HOME/Documents/wallpapers/wolf_link.jpg
 
+exec_always xinput disable 14
+
 # Script to set our screen settings
 exec --no-startup-id xrandr --output DP-0 --mode 1920x1080 --rate 144.00 --pos 3840x0 --rotate normal \
 	--output DP-1 --off \

@@ -45,6 +45,7 @@ eval "$(direnv hook zsh)"
 . "$HOME/.cargo/env"
 
 zstyle ':fzf-tab:*' fzf-command 
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

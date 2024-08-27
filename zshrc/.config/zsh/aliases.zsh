@@ -22,6 +22,8 @@ alias ta='t attach -t'
 alias tm='tmuxifier s'
 
 alias lgt='lazygit'
+alias lzd='lazydocker'
+alias lzn='lazynpm'
 
 alias glog="git log --oneline | fzf --preview 'git show --color=always {+1}' | awk '{print $1}' | xargs -I {} git show {}"
 
