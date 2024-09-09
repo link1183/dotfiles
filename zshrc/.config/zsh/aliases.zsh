@@ -1,7 +1,7 @@
 alias e='exit'
 alias cls='clear'
 alias rmrf='rm -rf'
-alias pcupdate='sudo pacman -Syu --noconfirm --noprogressbar && yay -Syu --noconfirm --noprogressbar'
+alias pcupdate='yay -Syu --noconfirm --noprogressbar'
 
 alias rpi='ssh agunthe1@rpi.adrieng.ch'
 

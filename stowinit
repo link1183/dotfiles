@@ -10,7 +10,7 @@ STOW_FOLDERS=$(find "$DOTFILES" -mindepth 1 -maxdepth 1 -type d ! -name '.git' -
 
 # Default STOW_FOLDERS if not set
 if [[ -z $STOW_FOLDERS ]]; then
-    STOW_FOLDERS="alacritty,gitconfig,i3,nvim,oh-my-posh,profile,tmux,zshrc"
+    STOW_FOLDERS="kitty,gitconfig,hypr,nvim,oh-my-posh,profile,tmux,zshrc,fastfetch,hyde,lazydocker,rofi,waybar,waypaper"
 fi
 
 # Execute the installation script
