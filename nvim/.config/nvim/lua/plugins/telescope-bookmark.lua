@@ -12,7 +12,7 @@ return {
       "kkharji/sqlite.lua",
       --
       --   -- Only if you're using the Telescope extension
-      --   'nvim-telescope/telescope.nvim',
+      "nvim-telescope/telescope.nvim",
     },
   },
 }

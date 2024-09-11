@@ -55,6 +55,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.editor.mini-move", version = "*" },
     { import = "lazyvim.plugins.extras.editor.refactoring", version = "*" },
     { import = "lazyvim.plugins.extras.editor.fzf", version = "*" },
+    { import = "lazyvim.plugins.extras.editor.telescope", version = "*" },
 
     -- Formatting stuff
     { import = "lazyvim.plugins.extras.formatting.black", version = "*" },

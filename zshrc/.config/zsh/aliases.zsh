@@ -11,7 +11,7 @@ alias cat="bat"
 alias inv='nvim $(fzf -m --preview="bat --color=always {}")'
 
 # nvim aliases
-alias v='nvim'
+# alias v='nvim'
 alias v.='nvim .'
 alias nvimrc='v $HOME/.config/nvim'
 alias nvimrcc='cd $HOME/.config/nvim && v $HOME/.config/nvim'
@@ -29,7 +29,6 @@ alias glog="git log --oneline | fzf --preview 'git show --color=always {+1}' | a
 
 # zsh config files sourcing and editing
 alias zshrc='nvim $HOME/.zshrc'
-alias sozsh='source $HOME/.zshrc'
 
 # cd stuff
 alias cd='z'

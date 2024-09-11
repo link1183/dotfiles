@@ -10,9 +10,9 @@ compinit
 HISTFILE=~/.zsh_history
 
 # source
+plug "$HOME/.config/zsh/functions.zsh"
 plug "$HOME/.config/zsh/aliases.zsh"
 plug "$HOME/.config/zsh/exports.zsh"
-plug "$HOME/.config/zsh/functions.zsh"
 # plug "$HOME/.config/zsh/comp.zsh"
 plug "$HOME/.config/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh"
 
@@ -23,7 +23,7 @@ plug "hlissner/zsh-autopair"
 plug "zap-zsh/supercharge"
 plug "zap-zsh/fzf"
 plug "Aloxaf/fzf-tab"
-plug "zap-zsh/exa"
+plug "zap-zsh/exa" # Must be loaded after supercharge
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-history-substring-search"
 plug "MichaelAquilina/zsh-you-should-use"
