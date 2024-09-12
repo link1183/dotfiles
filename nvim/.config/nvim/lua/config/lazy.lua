@@ -33,6 +33,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.json", version = "*" },
     { import = "lazyvim.plugins.extras.lang.typescript", version = "*" },
     { import = "lazyvim.plugins.extras.lang.yaml", version = "*" },
+    { import = "lazyvim.plugins.extras.lang.php", version = "*" },
 
     -- Linting
     { import = "lazyvim.plugins.extras.linting.eslint", version = "*" },
