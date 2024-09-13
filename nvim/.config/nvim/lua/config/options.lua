@@ -1,4 +1,6 @@
 -- This file is automatically loaded by plugins.core
+
+-- Local and global leaders
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -44,7 +46,7 @@ opt.foldlevel = 99
 opt.formatexpr = "v:lua.require'lazyvim.util'.format.formatexpr()"
 opt.formatoptions = "jcroqlnt" -- tcqj
 opt.grepformat = "%f:%l:%c:%m"
-opt.grepprg = "rg --vimgrep"
+opt.grepprg = 'rg --vimgrep -g "!{node_modules/*,.git/*,package-lock.json,yarn.lock}"'
 opt.ignorecase = true -- Ignore case
 opt.inccommand = "split" -- preview incremental substitute
 opt.laststatus = 3 -- global statusline

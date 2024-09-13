@@ -73,14 +73,14 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.util.dot", version = "*" },
     { import = "lazyvim.plugins.extras.util.mini-hipatterns", version = "*" },
 
-    -- import/override with your plugins
+    -- Own config/plugins
     { import = "plugins" },
   },
   defaults = {
     lazy = false,
     version = false,
   },
-  checker = { enabled = true }, -- automatically check for plugin updates
+  -- checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
     rtp = {
       disabled_plugins = {
