@@ -61,11 +61,6 @@ map("o", "N", "'nN'[v:searchforward].'zz'", { expr = true, desc = "Prev Search R
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 
--- Add undo break-points
-map("i", ",", ",<c-g>u")
-map("i", ".", ".<c-g>u")
-map("i", ";", ";<c-g>u")
-
 -- save file
 vim.api.nvim_set_keymap(
   "n",
