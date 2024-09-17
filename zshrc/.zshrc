@@ -35,7 +35,8 @@ plug "kutsan/zsh-system-clipboard"
 plug "wintermi/zsh-rust"
 
 # oh-my-posh prompt
-eval "$(oh-my-posh init zsh --config $OHMYPOSH/config.toml)"
+# eval "$(oh-my-posh init zsh --config $OHMYPOSH/config.toml)"
+eval "$(starship init zsh)"
 
 eval $(thefuck --alias)
 eval "$(tmuxifier init -)"
