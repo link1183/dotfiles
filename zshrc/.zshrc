@@ -42,6 +42,7 @@ eval $(thefuck --alias)
 eval "$(tmuxifier init -)"
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
+eval $(keychain --eval --quiet rpi rpiadmin)
 
 . "$HOME/.cargo/env"
 

@@ -3,7 +3,8 @@ alias cls='clear'
 alias rmrf='rm -rf'
 alias pcupdate='yay --noconfirm --noprogressbar'
 
-alias rpi='ssh agunthe1@rpi.adrieng.ch'
+alias rpiadmin='ssh agunthe1@rpi.adrieng.ch'
+alias rpi='ssh github@rpi.adrieng.ch'
 
 alias ompupdate='curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/bin'
 
