@@ -38,7 +38,6 @@ plug "wintermi/zsh-rust"
 eval "$(oh-my-posh init zsh --config $OHMYPOSH/config.toml)"
 # eval "$(starship init zsh)"
 
-eval $(thefuck --alias)
 eval "$(tmuxifier init -)"
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
