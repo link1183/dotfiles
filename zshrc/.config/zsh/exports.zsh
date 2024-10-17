@@ -22,3 +22,10 @@ export PATH="$PATH:$GEM_HOME/bin:$HOME/.config/tmux/plugins/tmuxifier/bin/"
 export DEVKITPRO=/opt/devkitpro
 export DEVKITARM=/opt/devkitpro/devkitARM
 export DEVKITPPC=/opt/devkitpro/devkitPPC
+
+export DOCKER_HOST=unix:///var/run/docker.sock
+
+# cs50 stuff
+export CC="clang"
+export CFLAGS="-ferror-limit=1 -gdwarf-4 -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-gnu-folding-constant -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wno-unused-but-set-variable -Wshadow"
+export LDLIBS="-lcrypt -lcs50 -lm"
