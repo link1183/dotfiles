@@ -34,9 +34,7 @@ plug "zap-zsh/sudo"
 plug "kutsan/zsh-system-clipboard"
 plug "wintermi/zsh-rust"
 
-# oh-my-posh prompt
-eval "$(oh-my-posh init zsh --config $OHMYPOSH/config.toml)"
-# eval "$(starship init zsh)"
+eval $(oh-my-posh init zsh --config /home/agunthe1/.config/oh-my-posh/config.toml)
 
 eval "$(tmuxifier init -)"
 eval "$(zoxide init zsh)"
@@ -47,6 +45,12 @@ eval $(keychain --eval --quiet rpi rpiadmin)
 
 zstyle ':fzf-tab:*' fzf-command 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt SHARE_HISTORY
+set -o vi
+
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

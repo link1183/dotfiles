@@ -12,6 +12,7 @@ export FZF_DEFAULT_OPTS=" \
 export RANGER_LOAD_DEFAULT_RC=false
 export EDITOR=nvim
 export VISUAL=nvim
+export BROWSER=firefox
 export TMUXIFIER_LAYOUT_PATH=$HOME/.config/tmux/layouts/
 
 export MANPAGER='nvim +Man!'
