@@ -1,0 +1,13 @@
+mv ~/.config/nushell/ nushell/.config/nushell/
+cd nushell/.config/nushell/
+las
+ls
+mv nushell/* .
+ls
+rmrf nushell/
+cd ...
+cd.
+stow nushell
+cd dotfiles
+stow nushell 
+stow nushell  --adopt
