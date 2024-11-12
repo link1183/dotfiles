@@ -219,26 +219,6 @@ return {
             name = "work",
             path = "~/vaults/work",
           },
-          {
-            name = "maths",
-            path = "~/vaults/maths/",
-          },
-          {
-            name = "economie",
-            path = "~/vaults/economie/",
-          },
-          {
-            name = "oop",
-            path = "~/vaults/oop/",
-          },
-          {
-            name = "containers",
-            path = "~/vaults/containers/",
-          },
-          {
-            name = "agile",
-            path = "~/vaults/agile/",
-          },
         },
         daily_notes = {
           folder = "notes/dailies",

@@ -17,6 +17,9 @@ alias cp = cp -i
 alias mv = mv -i
 alias rm = rm -i
 
+# Listing
+alias ls = ls -a
+
 # Grep
 alias grep = grep --color=auto
 alias egrep = grep -E --color=auto
@@ -26,10 +29,12 @@ alias fgrep = grep -F --color=auto
 alias cd = z
 alias cdi = zi
 alias c.d = z ..
-alias cd. = z ../..
-alias cd.. = z ../../..
-alias cd... = z ../../../..
-alias cd.... = z ../../../../..
+alias cd. = z ..
+alias cd.. = z ../..
+alias cd... = z ../../..
+alias cd.... = z ../../../..
+alias cd- = z -
+alias c-d = z -
 
 # Nvim related
 def inv [] {

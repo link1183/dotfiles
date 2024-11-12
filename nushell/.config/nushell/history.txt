@@ -11,3 +11,565 @@ stow nushell
 cd dotfiles
 stow nushell 
 stow nushell  --adopt
+lgt
+cd
+ls
+cd pro
+ls
+cd LauzHack.github.io/
+ls
+v ReadMe.md
+zsh
+ls
+nvim fn.zsh
+./startup
+v startup
+./startup
+v startup
+./startup
+v startup
+./startup
+v startup
+./startup
+v startup
+./startup
+nproc
+v startup
+./startup
+nproc
+bash
+v startup
+./startup
+v startup
+./startup
+900 / 20
+v startup
+./startup
+v startup
+./startup
+nurc
+cd
+v startup
+mv startup startup.c
+v startup.c
+gcc -o startup startup.c startup.c and startup
+gcc -o startup startup.c startup.c
+mkdir startup-shell-time
+mv startup.c startup-shell-time/
+cd startup-shell-time/
+ls
+v startup.c
+v startup.h
+gcc -o startup startup.c 
+./startup
+nurc
+plugin lis
+plugin list
+cargo install nu-plugin-bexpand
+cargo
+cr
+cd
+cd nu
+cd
+ls
+ls -l
+ls -a
+cd .cargo/
+ls
+cd bin/
+nurc
+cargo install nu_plugin_highlight
+cd
+cargo install nu-plugin-bexpand
+cargo install nu_plugin_highlight
+which nu_plugin_bexpand 
+plugin add ~/.cargo/bin/nu_plugin_bexpand
+cargo install nu_plugin_highlight
+plugin add ~/.cargo/bin/nu_plugin_bexpand
+plugin list
+treessyd
+ls
+cargo install nu_plugin_units
+plugin add ~/.cargo/bin/nu_plugin_units
+register ~/.cargo/bin/nu_plugin_bexpand
+plugin list
+units 
+units -c time -u years -v 1
+units -c time -u years -v 3.0
+overlay list
+external | str join
+cd classes/320-OOP/
+la
+ls
+dotnet
+ls
+cd Downloads/
+mv `Exercice 2 - Corrigé.zip` ~/classes/320-OOP/
+cd 320
+la
+ls
+mv `~/Downloads/Exercice 4 - Interface - Corrigé.zip` ~/classes/320-OOP/
+extract `Exercice 4 - Interface - Corrigé.zip`
+ls
+cd `Exercice 4 - Interface - Corrigé.zip`
+ls
+extract `Exercice 4 - Interface - Corrigé.zip` ex4
+rmrf Bank.cs BankAccount.cs CurrentAccountDebitRule.cs Customer.cs
+mkdir ex4_corr
+mv `Exercice 4 - Interface - Corrigé.zip` ex4_corr/
+pcupdate
+cd ex4_corr/
+ls
+extract `Exercice 4 - Interface - Corrigé.zip`
+ls
+v.
+ls
+v IDebitRule.cs
+dotnet --version
+ls
+rmrf bin/ obj/
+rmrf `Exercice 4 - Interface - Corrigé.zip`
+cd.
+ls
+cd 320-OOP/
+ls
+rmrf IDebitRule.cs Program.cs SavingsAccountDebitRule.cs StandardAccountDebitRule.cs
+cd ex4_corr/
+ls
+dotnet 
+dotnet -h
+dotnet watch
+ls
+rmrf bin/ obj/
+ls
+v labo2.csproj
+ls
+dotnet watch
+v labo2.csproj
+yay -S dotnet-runtime-6.0-bin
+ls
+dotnet watch
+ls
+yay -S dotnet-runtime-6.0
+cd hypr
+la
+ls
+v hypridle.conf
+cd 320
+ls
+rmrf labo2.csproj `Exercice 2 - Corrigé.zip`
+ls
+dotnet new 
+dotnet new console labo3
+dotnet new console
+ls
+rmrf 320-OOP.csproj Program.cs
+rmrf obj/
+rmrf labo3
+mkcd labo3
+dotnet new console
+ls
+v Program.cs
+dotnet run
+ls
+cd labo3
+ls
+dotnet run
+cd.
+rmrf labo3
+mv `~/Downloads/Labo 3 - Code source de base.zip` .
+mkdir labo3
+mv `Labo 3 - Code source de base.zip` labo3/
+cd labo3/
+ls
+extract `Labo 3 - Code source de base.zip`
+ls
+v epsic-320-labo3.csproj
+ls
+dotnet run
+cd classes/
+ls
+cd 426-Scrum/
+ls
+v Dockerfile
+docker run -it --rm tomcat:9.0
+docker run -it --rm -p 8080:8080 tomcat:9.0
+cls
+t
+help
+ps
+ps | where cpu > 0
+ls
+ls | where type == dir
+ps
+ps | where cpu > 0
+psmem
+nurc
+cd
+./startup-shell-time/
+ls
+./startup
+v startup.c
+ls
+cd .sh
+cd .ssh
+ls
+cat id_ed25519.pub 
+ssh -i id_ed25519 azureuser@51.107.19.85
+ssh -i id_ed25519 azureuser@51.107.23.5
+cd class
+ls
+mkdir 346-Cloud
+cd 346-Cloud/
+ls
+pandoc
+yay -S pandoc
+pandoc -o test.pdf readme.md 
+yay -S pdflatext
+yay -S pdflatex
+pandoc -o test.pdf readme.md --pdf-engine=xelatex
+sudo pacman -S texlive-most<\n>
+sudo pacman -S texlive-core<\n>
+pandoc -o test.pdf readme.md --pdf-engine=xelatex
+sudo fmtutil-sys --all<\n>
+sudo texhash<\n>
+pandoc -o test.pdf readme.md --pdf-engine=xelatex
+sudo texhash<\n>
+sudo pacman -Rns texlive-core<\n>sudo pacman -S texlive-most<\n>
+yay -S textlive-bin
+pacman -F pdflatex
+yay -S extra/textlive-bin
+yay -S textlive-full
+yay -S pandoc-bin
+pandoc -o test.pdf readme.md --pdf-engine=xelatex
+pandoc -o test.pdf readme.md
+yay -S textlive-installer
+yay -S textlive-context
+yay -S textlive-latex
+yay -S textlive
+sudo pacman -S pandoc texlive-most<\n>
+sudo pacman -S texlive-core<\n>
+sudo pacman -S texlive-latexextra texlive-fontsextra texlive-pictures<\n>
+pandoc -o test.pdf readme.md
+pandoc -o test.pdf readme.md --pdf-engine=xelatex
+mv ~/Downloads/readme.pdf .
+v readme.md
+ls
+open readme.pdf
+mv readme.pdf AdrienGunther.pdf
+cls
+ls
+cd 347
+ls
+cd ..
+cd.
+rmrf 347
+cd class
+ls
+cd 347-Docker/
+ls
+cd 347_05_exercice_B/
+ls
+docker run
+docker ps
+cd.
+cd classes/347-Docker/
+ls
+mkcd lab
+ls
+mv ../347_05_exercice_B/ .
+ls
+v 347_05_exercice_B/
+mv ~/Downloads/347_05_exercice_B.zip .
+mkdir v1
+mv 347_05_exercice_B.zip v1
+cd v1
+extract 347_05_exercice_B.zip
+rmrf 347_05_exercice_B.zip
+ls
+cd 347_05_exercice_B/
+ls
+cp ../../347_05_exercice_B/Dockerfile .
+zsh
+cd
+docker build -t todo-app . && docker run -p 3000:3000 -v /home/agunthe1/347/347_05_exercice_B/db:/etc/todos todo-app
+docker build -t todo-app . and docker run -p 3000:3000 -v /home/agunthe1/347/347_05_exercice_B/db:/etc/todos todo-app
+cd 34
+ls
+cd ..
+ls
+sudo rm -rf 347
+cd 34
+ls
+cd la
+cd 347-Docker/
+ls
+cd lab/
+ls
+cd v1/347_05_exercice_B/
+ls
+docker build -t todo-app .; docker run -p 3000:3000 -v /home/agunthe1/347/347_05_exercice_B/db:/etc/todos todo-app
+pwd
+cd
+ls
+docker build -t todo-app .; docker run -p 3000:3000 -v /home/agunthe1/classes/347-Docker/lab/v1/347_05_exercice_B/db:/etc/todos todo-app
+docker tag todo-app:1.0 my_app:1.0<\n>docker push my_app:1.0<\n>
+docker tag todo-app my_app:1.0<\n>docker push my_app<\n>
+docker login
+docker tag todo-app adriengunther/my_app:1.0<\n>
+docker push adriengunther/my_app:1.0<\n>
+cd 34
+ls
+cd lab/
+ls
+cd 347_05_exercice_B/
+ls
+docker tag todo-app adriengunther/my_app:2.0<\n>
+docker push adriengunther/my_app:2.0<\n>
+docker build -t todo-app .; docker run -p 3000:3000 -v /home/agunthe1/classes/347-Docker/lab/347_05_exercice_B/db:/etc/todos todo-app
+docker run -p 3000:3000 -v /home/agunthe1/classes/347-Docker/lab/347_05_exercice_B/db:/etc/todos todo-app:1.0
+docker build -t todo-app:1.0
+docker build -t todo-app:1.0 .
+docker build -t todo-app:2.0 .
+docker run -p 3000:3000 -v /home/agunthe1/classes/347-Docker/lab/347_05_exercice_B/db:/etc/todos todo-app:2.0
+docker run -p 3000:3001 -v /home/agunthe1/classes/347-Docker/lab/347_05_exercice_B/db:/etc/todos todo-app:2.0
+cd 
+cd Pictures/
+ls
+cd Screenshots/
+ls
+mv 241111_16h19m55s_screenshot.png ~/classes/347-Docker/
+mv ~/Pictures/Screenshots/241111_16h22m27s_screenshot.png ../..
+docker run -p 3001:3000 -v /home/agunthe1/classes/347-Docker/lab/347_05_exercice_B/db:/etc/todos todo-app:2.0
+docker run -p 3000:3000 -v /home/agunthe1/classes/347-Docker/lab/347_05_exercice_B/db:/etc/todos todo-app:1.0
+docker scan 
+docker scout
+docker scout recommendations todo-app:2.0
+docker tag todo-app adriengunther/my_app:2.1<\n>
+docker push adriengunther/my_app:2.1<\n>
+docker scout recommendations todo-app:2.1
+docker build -t todo-app:2.1 .
+v Dockerfile
+docker build -t todo-app:2.1 .
+docker scout recommendations todo-app:2.1
+docker scout recommendations todo-app:2.2
+docker tag todo-app adriengunther/my_app:2.2<\n>
+docker build -t todo-app:2.2 .
+docker push adriengunther/my_app:2.2<\n>
+docker tag todo-app adriengunther/my_app:2.2<\n>
+docker push adriengunther/my_app:2.2<\n>
+docker login
+docker pull adriengunther/my_app:1.0
+docker pull adriengunther/my_app:2.0
+docker scout recommendations todo-app:2.2
+docker build -t todo-app:2.3 .
+docker scout recommendations todo-app:2.3
+docker tag todo-app:2.3 adriengunther/my_app:2.3<\n>
+docker pull adriengunther/my_app:2.3
+docker login
+docker push adriengunther/my_app:2.3
+t
+ta 
+v.
+ls
+cd 347
+ls
+cd lab
+ls
+cd.
+cd agunthe1/
+cd 347
+ls
+mv lab/ AdrienGunther
+nurc
+tmux attach-session 
+cd.
+cd agunthe1/
+ls
+cd 347
+ls
+mv AdrienGunther/ Lab_1-AdrienGunther
+docker rm 
+docker volume 
+docker volume ls
+docker volume inspect
+docker volume inspect 
+cd Lab_1-AdrienGunther/code/v1.0/
+ls
+docker build -t todo-app:1.0 .
+docker tag todo-app:1.0 adriengunther/my_app:1.0<\n>
+docker push adriengunther/my_app:1.0
+cd.
+cd v4.0/
+ls
+v Dockerfile
+docker build -t todo-app:2.0 .
+docker tag todo-app:2.0 adriengunther/my_app:2.0<\n>
+docker push adriengunther/my_app:2.0
+docker scout recommendations todo-app:2.0
+v Dockerfile
+docker build -t todo-app:2.1 .
+docker tag todo-app:2.1 adriengunther/my_app:2.1<\n>
+docker push adriengunther/my_app:2.1
+cd.
+v Dockerfile
+docker build -t todo-app:2.1 .
+docker tag todo-app:2.1 adriengunther/my_app:2.1<\n>
+docker push adriengunther/my_app:2.1
+v Dockerfile
+docker build -t todo-app:2.2 .
+docker tag todo-app:2.2 adriengunther/my_app:2.2<\n>
+docker push adriengunther/my_app:2.2
+v readme.md
+nvimrcc
+yay -S figma-linux
+yay -Rns figma-linux
+docker -d
+docker run -n
+docker run --name
+docker container rm 
+docker container ls
+docker ps
+docker init
+docker inspect
+docker inspect my_app:1.0 
+docker info
+ls
+cd pro
+ls
+cd uk
+ls
+cd.
+ls
+cd app
+ls
+cd.
+ls
+cd rpi-containers/
+ls
+cd.
+ls
+cd cs50/
+ls
+cd.
+cd LauzHack.github.io/
+git fetch
+git pull
+lgt
+git pull
+docker init
+ls
+lgt
+t
+cd class
+ls
+cd vaults
+ls
+cd agile/
+ls
+mv * ~/classes/426-Scrum/
+cd.
+rmrf agile/
+ls
+cdls containers/
+cl containers/
+mv * ~/classes/347-Docker/
+cd.
+rmrf containers/
+ls
+cd oop/
+ls
+mv * ~/classes/320-OOP/
+ls
+cd
+cd -
+cd.
+rmrf oop/
+ls
+nurc
+cd-
+c-d
+cd-
+c-d
+nurc
+cd
+cd-
+c-d
+cd-
+c-d
+cd-
+c-d
+ls
+cd classes/
+ls
+cd labo3/
+ls
+cd.
+rmrf labo3/
+cd 347-Docker/
+ls
+cd docker/
+ls
+cd.
+ls
+cd.
+ls
+cd 347-Docker/
+ls
+rmrf Excalidraw/ Welcome.md docker/ notes/
+ls
+cd Lab_1-AdrienGunther/
+ls
+cd code
+ls
+mv v4.0/ 2.2
+ls
+mv v1.0/ 1.0
+ls
+cp 2.2 2.0
+cp 2.2 2.0 -r
+cp 2.2 2.1 -r
+ls
+cd 1.0/
+ls
+v README.md
+ls
+cd.
+kls
+ls
+cd 2.1
+ls
+v Dockerfile
+cd.
+la
+ls
+c.d
+ls
+mv readme.md README.md
+ls
+cd.
+ls
+ll
+ls -l
+ls -la
+rmrf .git/ .gitignore .obsidian/
+ls
+ls -l
+nurc
+ls
+cd
+cd-
+cd clas
+ls
+cd 347-Docker/
+ls
+cd pro
+ls
+cd LauzHack.github.io/
+ls
+lgt
+ls
+v CNAME
+cd vaut
+nvimrcc
+ls

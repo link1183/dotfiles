@@ -104,15 +104,16 @@ $env.PATH = ($env.PATH | split row (char esep))
 path add ($nu.home-path | path join "go/bin")
 path add "/home/linuxbrew/.linuxbrew/bin"
 path add $"(gem env user_gemhome)/bin"
+path add ($nu.home-path | path join ".cargo/bin")
 $env.PATH = ($env.PATH | uniq)
 
-$env.CC = "clang"
-$env.CFLAGS = [
-    "-ferror-limit=1 -gdwarf-4 -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra",
-    "-Wno-gnu-folding-constant -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable",
-    "-Wno-unused-but-set-variable -Wshadow"
-] | str join " "
-$env.LDLIBS = "-lcrypt -lcs50 -lm"
+#$env.CC = "clang"
+#$env.CFLAGS = [
+#    "-ferror-limit=1 -gdwarf-4 -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra",
+#    "-Wno-gnu-folding-constant -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable",
+#    "-Wno-unused-but-set-variable -Wshadow"
+#3] | str join " "
+#$env.LDLIBS = "-lcrypt -lcs50 -lm"
 
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
