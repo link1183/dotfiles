@@ -35,7 +35,14 @@ return {
     config = function()
       require("obsidian").setup({
         workspaces = {
-          folder = "~/vaults/personal",
+          {
+            name = "Personal",
+            path = "~/vaults/personal",
+          },
+          {
+            name = "Work",
+            path = "~/vaults/work",
+          },
         },
         daily_notes = {
           folder = "notes/dailies",
