@@ -74,7 +74,6 @@ zinit wait lucid for \
     zap-zsh/exa \
     zsh-users/zsh-history-substring-search \
     MichaelAquilina/zsh-you-should-use \
-    wintermi/zsh-oh-my-posh \
     Freed-Wu/fzf-tab-source \
     chivalryq/git-alias \
     zap-zsh/sudo \
@@ -82,7 +81,7 @@ zinit wait lucid for \
     wintermi/zsh-rust
 
 # Initialize tools
-eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/config.toml)"
+eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 eval "$(keychain --eval --quiet rpi rpiadmin)"

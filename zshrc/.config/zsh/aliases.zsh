@@ -84,11 +84,6 @@ if (($ + commands[ssh])); then
 	alias rpi='ssh github@rpi.adrieng.ch'
 fi
 
-# Tool updates
-if (($ + commands[curl])); then
-	alias ompupdate='curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/bin'
-fi
-
 # Rust development
 if (($ + commands[cargo])); then
 	alias cr='cargo run'
