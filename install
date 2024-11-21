@@ -4,7 +4,7 @@ pushd $DOTFILES
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
 do
     echo "stow $folder"
-    stow --ignore='^\.post-install$' -D $folder
-    stow --ignore='^\.post-install$' $folder
+    stow --ignore='^\.post-install$' -D $folder -t ~
+    stow --ignore='^\.post-install$' $folder -t ~
 done
 popd

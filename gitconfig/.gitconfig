@@ -1,6 +1,10 @@
-[user]
-  email = adrien.gunther@gmail.com
-  name = link1183
+[includeIf "gitdir:~/projects/github/"]
+    path = .gitconfig-github
+  name = Personal
+
+[includeIf "gitdir:~/projects/gitlab/"]
+    path = .gitconfig-gitlab
+  name = Work
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RF
 [interactive]
@@ -29,10 +33,6 @@
 	enabled = true
 [column]
 	ui = auto
-[maintenance]
-	repo = /home/agunthe1/projects/app/backend
-	repo = /home/agunthe1/projects/app/frontend
-  repo = /home/agunthe1/.dotfiles
 [init]
 	defaultbranch = main
 [pull]

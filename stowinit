@@ -2,7 +2,7 @@
 
 # Set DOTFILES variable
 if [[ -z $DOTFILES ]]; then
-    DOTFILES=$HOME/.dotfiles
+    DOTFILES=$HOME/projects/github/.dotfiles
 fi
 
 # Fetch all directories in ~/.dotfiles/ excluding .git

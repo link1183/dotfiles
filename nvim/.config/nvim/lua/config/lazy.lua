@@ -63,6 +63,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.editor.fzf", version = "*" },
     { import = "lazyvim.plugins.extras.editor.telescope", version = "*" },
     { import = "lazyvim.plugins.extras.editor.overseer", version = "*" },
+    -- { import = "lazyvim.plugins.extras.editor.inc-rename", version = "*" },
 
     -- Formatting stuff
     { import = "lazyvim.plugins.extras.formatting.black", version = "*" },
