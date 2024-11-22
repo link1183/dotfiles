@@ -87,7 +87,6 @@ $env.BROWSER = "firefox"
 $env.MANPAGER = "nvim +Man!"
 $env.MANWIDTH = 999
 $env.WEBKIT_DISABLE_DMABUF_RENDERER = 1
-$env.RUST_SRC_PATH = $"($nu.home-path)/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/"
 $env.DEVKITPRO = "/opt/devkitpro"
 $env.DEVKITPPC = "/opt/devkitpro/devkitPPC"
 $env.DOCKER_HOST = "unix:///var/run/docker.sock"
@@ -104,7 +103,7 @@ $env.PATH = ($env.PATH | split row (char esep))
 path add ($nu.home-path | path join "go/bin")
 path add "/home/linuxbrew/.linuxbrew/bin"
 path add $"(gem env user_gemhome)/bin"
-path add ($nu.home-path | path join ".cargo/bin")
+path add "/home/agunthe1/.cargo/bin"
 $env.PATH = ($env.PATH | uniq)
 
 #$env.CC = "clang"
