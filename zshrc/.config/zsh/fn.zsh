@@ -53,14 +53,6 @@ gacp() {
 	git add . && git commit -m "$1" && git push
 }
 
-# Quick git checkout with fzf
-gco() {
-	local branches branch
-	branches=$(git branch --all | grep -v HEAD) &&
-		branch=$(echo "$branches" | fzf-tmux -d $((2 + $(wc -l <<<"$branches"))) +m) &&
-		git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-}
-
 # Find-in-file function with ripgrep and fzf
 fif() {
 	if [ ! "$#" -gt 0 ]; then
