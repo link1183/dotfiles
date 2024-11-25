@@ -1,6 +1,6 @@
 # Core command modifications
 # Only set if the target commands exist
-if (($ + commands[bat])); then
+if (($+commands[bat])); then
 	alias cat='bat'
 else
 	alias cat='cat --color=auto'
@@ -17,14 +17,14 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 # Search and grep improvements
-if (($ + commands[grep])); then
+if (($+commands[grep])); then
 	alias grep='grep --color=auto'
 	alias egrep='grep -E --color=auto'
 	alias fgrep='grep -F --color=auto'
 fi
 
 # Navigation (zoxide integration)
-if (($ + commands[zoxide])); then
+if (($+commands[zoxide])); then
 	alias cd='z'
 	alias cdi='zi'
 	alias c.d='z ..'
@@ -35,9 +35,9 @@ if (($ + commands[zoxide])); then
 fi
 
 # Neovim related
-if (($ + commands[nvim])); then
+if (($+commands[nvim])); then
 	# FZF integration
-	(($ + commands[fzf])) && alias inv='nvim $(fzf -m --preview="bat --color=always {}")'
+	(($+commands[fzf])) && alias inv='nvim $(fzf -m --preview="bat --color=always {}")'
 
 	# Config shortcuts
 	alias v.='nvim .'
@@ -49,42 +49,44 @@ if (($ + commands[nvim])); then
 fi
 
 # Tmux related
-if (($ + commands[tmux])); then
+if (($+commands[tmux])); then
 	alias t='tmux'
 	alias ta='t attach -t'
-	(($ + commands[tmuxifier])) && alias tm='tmuxifier s'
+	(($+commands[tmuxifier])) && alias tm='tmuxifier s'
 fi
 
 # Git and related tools
-if (($ + commands[git])); then
+if (($+commands[git])); then
 	# Lazy tools
-	(($ + commands[lazygit])) && alias lgt='lazygit'
-	(($ + commands[lazydocker])) && alias lzd='lazydocker'
-	(($ + commands[lazynpm])) && alias lzn='lazynpm'
+	(($+commands[lazygit])) && alias lgt='lazygit'
+	(($+commands[lazydocker])) && alias lzd='lazydocker'
+	(($+commands[lazynpm])) && alias lzn='lazynpm'
+
+	alias gacp=git add . && git commit -m "$1" && git push
 
 	# Git log with FZF preview
-	if (($ + commands[fzf])); then
+	if (($+commands[fzf])); then
 		alias glog="git log --oneline | fzf --preview 'git show --color=always {+1}' | awk '{print \$1}' | xargs -I {} git show {}"
 	fi
 fi
 
 # System monitoring
-if (($ + commands[ps])) && (($ + commands[fzf])); then
+if (($+commands[ps])) && (($+commands[fzf])); then
 	alias psmem='ps auxf | sort -nr -k 4 | head -5 | fzf'
 fi
 
 # Package management
-if (($ + commands[yay])); then
+if (($+commands[yay])); then
 	alias pcupdate='yay --noconfirm --noprogressbar'
 fi
 
 # Remote connections
-if (($ + commands[ssh])); then
+if (($+commands[ssh])); then
 	alias rpiadmin='ssh agunthe1@rpi.adrieng.ch'
 	alias rpi='ssh github@rpi.adrieng.ch'
 fi
 
 # Rust development
-if (($ + commands[cargo])); then
+if (($+commands[cargo])); then
 	alias cr='cargo run'
 fi

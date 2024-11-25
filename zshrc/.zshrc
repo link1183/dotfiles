@@ -45,15 +45,15 @@ setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE SHARE_HISTORY HIST_REDUCE_BLANKS HIST_
 
 # Load local config files in correct order
 # Load exports first (no delay)
-zinit snippet $HOME/.config/zsh/aliases.zsh
-zinit snippet $HOME/.config/zsh/exports.zsh
+source $HOME/.config/zsh/aliases.zsh
+source $HOME/.config/zsh/exports.zsh
 
 # Load functions before aliases since aliases might use functions
-zinit snippet $HOME/.config/zsh/fn.zsh
+source $HOME/.config/zsh/fn.zsh
 
 # Finally load theme
 zinit ice wait"0" lucid
-zinit snippet $HOME/.config/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
+source $HOME/.config/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
 
 # Plugin loading with optimizations
 zinit wait lucid for \

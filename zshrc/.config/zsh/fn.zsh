@@ -1,10 +1,10 @@
 # Enhanced nvim wrapper function
-v() {
-	if [ $# -eq 1 ] && [ -d "$1" ]; then
-		(cd "$1" && nvim .)
-	else
-		nvim "$@"
-	fi
+function v() {
+  if [ $# -eq 1 ] && [ -d "$1" ]; then
+    (cd "$1" && nvim .)
+  else
+    nvim "$@"
+  fi
 }
 
 # Quick directory creation and navigation
@@ -47,12 +47,6 @@ docker-cleanup() {
 	docker volume prune -f
 }
 
-# Git convenience functions
-# Quick git add, commit, push
-gacp() {
-	git add . && git commit -m "$1" && git push
-}
-
 # Find-in-file function with ripgrep and fzf
 fif() {
 	if [ ! "$#" -gt 0 ]; then
@@ -66,4 +60,13 @@ fif() {
 serve() {
 	local port=${1:-8000}
 	python3 -m http.server "$port"
+}
+
+y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
 }
