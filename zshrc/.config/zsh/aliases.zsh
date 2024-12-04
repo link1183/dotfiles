@@ -71,22 +71,14 @@ if (($+commands[git])); then
 fi
 
 # System monitoring
-if (($+commands[ps])) && (($+commands[fzf])); then
-	alias psmem='ps auxf | sort -nr -k 4 | head -5 | fzf'
-fi
+alias psmem='ps auxf | sort -nr -k 4 | head -5 | fzf'
 
 # Package management
-if (($+commands[yay])); then
-	alias pcupdate='yay --noconfirm --noprogressbar'
-fi
+alias pcupdate='yay --noconfirm --noprogressbar'
 
 # Remote connections
-if (($+commands[ssh])); then
-	alias rpiadmin='ssh agunthe1@rpi.adrieng.ch'
-	alias rpi='ssh github@rpi.adrieng.ch'
-fi
+alias rpiadmin='ssh agunthe1@rpi.adrieng.ch'
+alias rpi='ssh github@rpi.adrieng.ch'
 
 # Rust development
-if (($+commands[cargo])); then
-	alias cr='cargo run'
-fi
+alias cr='cargo run'
