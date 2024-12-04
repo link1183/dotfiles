@@ -32,6 +32,7 @@ if (($+commands[zoxide])); then
 	alias cd..='z ../..'
 	alias cd...='z ../../..'
 	alias cd....='z ../../../..'
+	alias cd-='z -'
 fi
 
 # Neovim related
