@@ -37,6 +37,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.typescript", version = "*" },
     { import = "lazyvim.plugins.extras.lang.yaml", version = "*" },
     { import = "lazyvim.plugins.extras.lang.omnisharp", version = "*" },
+    { import = "lazyvim.plugins.extras.lang.prisma", version = "*" },
 
     -- Linting
     { import = "lazyvim.plugins.extras.linting.eslint", version = "*" },
