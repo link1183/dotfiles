@@ -1,4 +1,4 @@
-# Critical paths and essential tools first
+
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
 # Core editor and browser settings
@@ -16,6 +16,7 @@ export MANWIDTH=999
 # Development tools
 function setup_dev_tools() {
     local paths=()
+    [[ -d "$HOME/flutter/bin" ]] && paths+=("$HOME/flutter/bin")
 
     # Go
     [[ -d "$HOME/go/bin" ]] && paths+=("$HOME/go/bin")
