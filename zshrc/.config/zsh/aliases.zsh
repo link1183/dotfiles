@@ -45,6 +45,8 @@ if (($+commands[nvim])); then
 	alias nvimrc='nvim $HOME/.config/nvim'
 	alias nvimrcc='cd $HOME/.config/nvim && nvim $HOME/.config/nvim'
 
+	alias sudovim='sudo -E nvim'
+
 	# ZSH config quick access
 	alias zshrc='nvim $HOME/.zshrc'
 fi

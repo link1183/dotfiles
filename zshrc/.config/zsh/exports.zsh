@@ -16,7 +16,7 @@ export MANWIDTH=999
 # Development tools
 function setup_dev_tools() {
     local paths=()
-    [[ -d "$HOME/flutter/bin" ]] && paths+=("$HOME/flutter/bin")
+    [[ -d "$HOME/flutter/flutter/bin" ]] && paths+=("$HOME/flutter/flutter/bin")
 
     # Go
     [[ -d "$HOME/go/bin" ]] && paths+=("$HOME/go/bin")
