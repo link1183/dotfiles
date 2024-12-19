@@ -49,5 +49,3 @@ end
 
 vim.api.nvim_create_user_command("Floaterminal", toggle_terminal, {})
 vim.keymap.set("n", "<space>tt", "<CMD>Floaterminal<CR>", { desc = "Opens a floating terminal window" })
-
-vim.api.nvim__screenshot("./test")
