@@ -2212,3 +2212,4 @@ auto-update = check
 # This only works on macOS since only macOS has an auto-update feature.
 auto-update-channel = 
 
+config-file = ?./windows
