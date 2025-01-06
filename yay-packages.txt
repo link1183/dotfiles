@@ -129,3 +129,4 @@ zoxide
 zram-generator
 zsh
 zsh-theme-powerlevel10k-git
+docker
