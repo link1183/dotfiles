@@ -79,9 +79,5 @@ alias psmem='ps auxf | sort -nr -k 4 | head -5 | fzf'
 # Package management
 alias pcupdate='yay --noconfirm --noprogressbar'
 
-# Remote connections
-alias rpiadmin='ssh agunthe1@rpi.adrieng.ch'
-alias rpi='ssh github@rpi.adrieng.ch'
-
 # Rust development
 alias cr='cargo run'
