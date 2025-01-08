@@ -39,13 +39,8 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.ai.copilot-chat", version = "*" },
 
     -- Coding extras
-    { import = "lazyvim.plugins.extras.coding.luasnip", version = "*" },
     { import = "lazyvim.plugins.extras.coding.mini-surround", version = "*" },
     { import = "lazyvim.plugins.extras.coding.yanky", version = "*" },
-
-    -- DAP stuff
-    { import = "lazyvim.plugins.extras.dap.core", version = "*" },
-    { import = "lazyvim.plugins.extras.dap.nlua", version = "*" },
 
     -- Editor stuff
     { import = "lazyvim.plugins.extras.editor.dial", version = "*" },
@@ -62,7 +57,6 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.formatting.prettier", version = "*" },
 
     -- Utils
-    { import = "lazyvim.plugins.extras.util.dot", version = "*" },
     { import = "lazyvim.plugins.extras.util.mini-hipatterns", version = "*" },
     { import = "lazyvim.plugins.extras.util.dot", version = "*" },
 
