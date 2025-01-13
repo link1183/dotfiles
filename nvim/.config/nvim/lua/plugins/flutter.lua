@@ -9,4 +9,13 @@ return {
       require("flutter-tools").setup({})
     end,
   },
+  {
+    "nvim-flutter/pubspec-assist.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("pubspec-assist").setup({})
+    end,
+  },
 }
