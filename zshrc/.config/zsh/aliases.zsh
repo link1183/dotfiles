@@ -77,7 +77,7 @@ fi
 alias psmem='ps auxf | sort -nr -k 4 | head -5 | fzf'
 
 # Package management
-alias pcupdate='yay --noconfirm --noprogressbar'
+alias pcupdate='yay --noconfirm'
 
 # Rust development
 alias cr='cargo run'
