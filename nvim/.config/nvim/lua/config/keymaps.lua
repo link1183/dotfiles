@@ -62,12 +62,7 @@ map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 
 -- save file
-vim.api.nvim_set_keymap(
-  "n",
-  "<C-s>",
-  ":lua if vim.fn.line('.') >= vim.fn.line('$') - 20 then vim.cmd('w | normal! zz') else vim.cmd('w') end<cr>",
-  { noremap = true, silent = true }
-)
+vim.api.nvim_set_keymap("n", "<C-s>", "<cmd>w<cr>", { noremap = true, silent = true })
 
 --keywordprg
 map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
