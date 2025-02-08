@@ -16,17 +16,17 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 # Load completion system in background
 {
     # Load compinit only once a day
-    autoload -Uz compinit
-    if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
-        compinit -d "${ZDOTDIR:-$HOME}/.zcompdump"
-    else
-        compinit -C
-    fi
+autoload -Uz compinit 
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+    compinit -d "${ZDOTDIR:-$HOME}/.zcompdump"
+else
+    compinit -C
+fi
 
-    # Compile zcompdump if modified
-    if [[ -s "${ZDOTDIR:-$HOME}/.zcompdump" && (! -s "${ZDOTDIR:-$HOME}/.zcompdump.zwc" || "${ZDOTDIR:-$HOME}/.zcompdump" -nt "${ZDOTDIR:-$HOME}/.zcompdump.zwc") ]]; then
-        zcompile "${ZDOTDIR:-$HOME}/.zcompdump"
-    fi
+# Compile zcompdump if modified
+if [[ -s "${ZDOTDIR:-$HOME}/.zcompdump" && (! -s "${ZDOTDIR:-$HOME}/.zcompdump.zwc" || "${ZDOTDIR:-$HOME}/.zcompdump" -nt "${ZDOTDIR:-$HOME}/.zcompdump.zwc") ]]; then
+    zcompile "${ZDOTDIR:-$HOME}/.zcompdump"
+fi
 } &!
 
 # Completion optimization
@@ -102,3 +102,6 @@ fi
 #
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+. "$HOME/.local/share/../bin/env"
+

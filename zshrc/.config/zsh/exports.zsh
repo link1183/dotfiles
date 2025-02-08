@@ -5,6 +5,7 @@ export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=firefox
+export CHROME_EXECUTABLE=google-chrome-stable
 
 # Man pages optimization
 export MANPAGER='nvim +Man!'
@@ -16,13 +17,10 @@ export MANWIDTH=999
 # Development tools
 function setup_dev_tools() {
     local paths=()
-    [[ -d "$HOME/flutter/flutter/bin" ]] && paths+=("$HOME/flutter/flutter/bin")
+    [[ -d "$HOME/development/flutter/bin" ]] && paths+=("$HOME/development/flutter/bin")
 
     # Go
     [[ -d "$HOME/go/bin" ]] && paths+=("$HOME/go/bin")
-
-    # Linuxbrew
-    [[ -d "/home/linuxbrew/.linuxbrew/bin" ]] && paths+=("/home/linuxbrew/.linuxbrew/bin")
 
     # Ruby Gems
     if (( $+commands[gem] )); then
@@ -56,12 +54,6 @@ unfunction setup_dev_tools  # Clean up after use
 # Tool-specific configurations
 # Docker
 [[ -S "/var/run/docker.sock" ]] && export DOCKER_HOST=unix:///var/run/docker.sock
-
-# Ghidra
-[[ -d "$HOME/ghidra" ]] && export GHIDRA_INSTALL_DIR="$HOME/ghidra/"
-
-# Oh My Posh
-[[ -d "$HOME/.config/oh-my-posh" ]] && export OHMYPOSH="$HOME/.config/oh-my-posh/"
 
 # FZF theme (Catppuccin Macchiato)
 export FZF_DEFAULT_OPTS="\

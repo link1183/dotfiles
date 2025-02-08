@@ -1,14 +1,36 @@
-- Install arch ISO
-  - Hyprland
+sudo pacman -S --needed git base-devel
 
-- Install yay
-- Install the packages in ./yay-packages.txt
-
-git clone https://github.com/link1183/dotfiles ~/projects/github/dotfiles
-./stowinit
-
-git clone tpm in ~/.config/tmux/plugins/
-
-ya pack -i
+neovim
+firefox
+git
+stow
+discord
+ghostty
+konsole
+starship
+zoxide
+lazygit
+direnv
+keychain
+npm
+pnpm
+cmake
+tmux
+docker
+docker-compose
+go
+gem
+bat
+alsa-utils
+sof-firmware
+alsa-ucm-conf
+alsa-firmware
+sesh
+luarocks
+fd
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+sudo usermod -aG docker $USER:$USER
+
+mkdir -p projects/github

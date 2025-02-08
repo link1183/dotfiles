@@ -49,11 +49,18 @@ docker-cleanup() {
 
 # Find-in-file function with ripgrep and fzf
 fif() {
-	if [ ! "$#" -gt 0 ]; then
-		echo "Need a string to search for!"
-		return 1
-	fi
-	rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+    if [ ! "$#" -gt 0 ]; then
+        echo "Need a string to search for!"
+        return 1
+    fi
+    result=$(rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}")
+
+    if [ -n "$result" ]; then
+        # Get the line number of the first match
+        line_num=$(rg --line-number --ignore-case "$1" "$result" | head -n1 | cut -d':' -f1)
+        # Open nvim at the specified line
+        nvim "+${line_num}" "$result"
+    fi
 }
 
 # Quick HTTP server
@@ -69,4 +76,8 @@ y() {
 		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
+}
+
+cleanup_zcompdump() {
+    find "$HOME" -name '.zcompdump*' -type f -mtime +7 -delete
 }
