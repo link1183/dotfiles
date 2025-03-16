@@ -3,6 +3,7 @@ local map = LazyVim.safe_keymap_set
 -- moving to the beginning or the end of the window
 map({ "n", "v" }, "gg", "gg0")
 map({ "n", "v" }, "G", "Gzz")
+map("i", "jj", "<esc>")
 
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })

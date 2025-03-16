@@ -37,11 +37,7 @@ return {
         workspaces = {
           {
             name = "Personal",
-            path = "~/vaults/personal",
-          },
-          {
-            name = "Work",
-            path = "~/vaults/work",
+            path = "~/projects/github/vaults/personal",
           },
         },
         daily_notes = {

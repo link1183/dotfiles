@@ -81,3 +81,5 @@ alias pcupdate='yay --noconfirm'
 
 # Rust development
 alias cr='cargo run'
+
+alias mongologs='tail -f ~/mongodb/logs/mongod.log | jq -r '\''.t."$date" + " [" + .s + "] " + .c + ":" + .ctx + " - " + .msg'\'''
