@@ -83,3 +83,8 @@ alias pcupdate='yay --noconfirm'
 alias cr='cargo run'
 
 alias mongologs='tail -f ~/mongodb/logs/mongod.log | jq -r '\''.t."$date" + " [" + .s + "] " + .c + ":" + .ctx + " - " + .msg'\'''
+
+alias open='xdg-open'
+
+alias sshfront='ssh -i ~/.ssh/azure azureuser@51.107.24.238'
+alias sshback='ssh -i ~/.ssh/azure azureuser@51.107.26.112'
