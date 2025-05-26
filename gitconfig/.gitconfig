@@ -37,3 +37,6 @@
 	defaultbranch = main
 [pull]
 	rebase = true
+[user]
+	email = adrien.gunther@gmail.com
+	name = link1183

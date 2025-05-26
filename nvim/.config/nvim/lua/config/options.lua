@@ -1,5 +1,3 @@
--- This file is automatically loaded by plugins.core
-
 -- Local and global leaders
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -97,11 +95,5 @@ end
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
-
--- LSP Server to use for Python.
--- Set to "basedpyright" to use basedpyright instead of pyright.
-vim.g.lazyvim_python_lsp = "pyright"
--- Set to "ruff_lsp" to use the old LSP implementation version.
-vim.g.lazyvim_python_ruff = "ruff"
 
 vim.g.snacks_animate = false

@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# zmodload zsh/zprof
 
 # Load zinit
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -98,8 +97,6 @@ if (( $+commands[pnpm] )); then
     esac
 fi
 
-# zprof
-#
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
@@ -129,4 +126,5 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+source <(jj util completion zsh)
 
