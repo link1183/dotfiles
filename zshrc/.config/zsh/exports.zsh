@@ -72,3 +72,6 @@ if (( $+commands[clang] )); then
 -Wno-unused-but-set-variable -Wshadow"
     export LDLIBS="-lcrypt -lcs50 -lm"
 fi
+
+export DISPLAY=172.30.224.1:0
+export XDG_RUNTIME_DIR=/tmp/xdg

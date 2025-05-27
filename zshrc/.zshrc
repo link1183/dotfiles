@@ -1,5 +1,8 @@
 #!/bin/sh
 
+=======
+autoload -Uz compinit
+compinit
 
 # Load zinit
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -11,22 +14,6 @@ if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
 fi
 
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
-
-# Load completion system in background
-{
-    # Load compinit only once a day
-autoload -Uz compinit 
-if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
-    compinit -d "${ZDOTDIR:-$HOME}/.zcompdump"
-else
-    compinit -C
-fi
-
-# Compile zcompdump if modified
-if [[ -s "${ZDOTDIR:-$HOME}/.zcompdump" && (! -s "${ZDOTDIR:-$HOME}/.zcompdump.zwc" || "${ZDOTDIR:-$HOME}/.zcompdump" -nt "${ZDOTDIR:-$HOME}/.zcompdump.zwc") ]]; then
-    zcompile "${ZDOTDIR:-$HOME}/.zcompdump"
-fi
-} &!
 
 # Completion optimization
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -46,8 +33,6 @@ setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE SHARE_HISTORY HIST_REDUCE_BLANKS HIST_
 # Load exports first (no delay)
 source $HOME/.config/zsh/aliases.zsh
 source $HOME/.config/zsh/exports.zsh
-
-# Load functions before aliases since aliases might use functions
 source $HOME/.config/zsh/fn.zsh
 
 # Finally load theme
@@ -85,9 +70,6 @@ eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 eval "$(keychain --eval --quiet rpi rpiadmin)"
 
-# Vi mode
-set -o vi
-
 # pnpm setup (conditional)
 if (( $+commands[pnpm] )); then
     export PNPM_HOME="$HOME/.local/share/pnpm"
@@ -100,31 +82,20 @@ fi
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-. "$HOME/.local/share/../bin/env"
-
-function sesh-sessions() {
-  {
-    exec </dev/tty
-    exec <&1
-    local session
-    session=$(sesh list -t -c | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
-    zle reset-prompt > /dev/null 2>&1 || true
-    [[ -z "$session" ]] && return
-    sesh connect $session
-  }
-}
-
-zle     -N             sesh-sessions
-bindkey -M emacs '\es' sesh-sessions
-bindkey -M vicmd '\es' sesh-sessions
-bindkey -M viins '\es' sesh-sessions
-
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
+# pnpm
+export PNPM_HOME="/home/agunthe1/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
 source <(jj util completion zsh)
 
+export XDG_RUNTIME_DIR=/home/agunthe1

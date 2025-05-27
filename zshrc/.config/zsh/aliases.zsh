@@ -88,3 +88,8 @@ alias open='xdg-open'
 
 alias sshfront='ssh -i ~/.ssh/azure azureuser@51.107.24.238'
 alias sshback='ssh -i ~/.ssh/azure azureuser@51.107.26.112'
+
+alias k='kubectl'
+alias kgp='kubectl get pods'
+alias kgs='kubectl get svc'
+alias kgn='kubectl get nodes'
