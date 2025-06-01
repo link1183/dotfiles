@@ -22,6 +22,8 @@ alias v='nvim'
 alias v.='nvim .'
 alias e='exit'
 alias lg='lazygit'
+alias lz='lazydocker'
+alias cat='bat'
 
 # # Directory navigation shortcuts
 alias ..='cd ..'
