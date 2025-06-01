@@ -1,101 +1,87 @@
-#!/bin/sh
+# Add user configurations here
+# For HyDE to not touch your beloved configurations,
+# we added 2 files to the project structure:
+# 1. ~/.user.zsh - for customizing the shell related hyde configurations
+# 2. ~/.zshenv - for updating the zsh environment variables handled by HyDE // this will be modified across updates
 
-=======
-autoload -Uz compinit
-compinit
+export aurhelper='yay'
 
-# Load zinit
-if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
-    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
-        print -P "%F{33} %F{34}Installation successful.%f%b" || \
-        print -P "%F{160} The clone has failed.%f%b"
-fi
+#  Aliases 
+# Add aliases here
+alias c='clear'                                                        # clear terminal
+alias la='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias ld='eza -lhD --icons=auto'                                       # long list dirs
+alias lt='eza --icons=auto --tree'                                     # list folder as tree
+alias un='$aurhelper -Rns'                                             # uninstall package
+alias up='$aurhelper -Syu'                                             # update system/package/aur
+alias pl='$aurhelper -Qs'                                              # list installed package
+alias pa='$aurhelper -Ss'                                              # list available package
+alias pc='$aurhelper -Sc'                                              # remove unused cache
+alias po='$aurhelper -Qtdq | $aurhelper -Rns -'                        # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
+alias v='nvim'
+alias v.='nvim .'
+alias e='exit'
+alias lg='lazygit'
 
-source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+# # Directory navigation shortcuts
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
 
-# Completion optimization
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' menu select
-zstyle ':completion:*' rehash true
-zstyle ':completion:*:descriptions' format '[%d]'
-zstyle ':completion:*' cache-path $HOME/.cache/zsh/cache
-zstyle ':fzf-tab:*' fzf-command fzf
+# Always mkdir a path (this doesn't inhibit functionality to make a single dir)
+alias mkdir='mkdir -p'
 
-# History configuration
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=20000
-setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE SHARE_HISTORY HIST_REDUCE_BLANKS HIST_VERIFY
+# yazi
+alias y='yazi'
 
-# Load local config files in correct order
-# Load exports first (no delay)
-source $HOME/.config/zsh/aliases.zsh
-source $HOME/.config/zsh/exports.zsh
-source $HOME/.config/zsh/fn.zsh
+# Config aliases
+alias zshrc='cd && nvim ~/.zshrc'
+alias nvimrc='cd ~/.config/nvim && nvim .'
 
-# Finally load theme
-zinit ice wait"0" lucid
-source $HOME/.config/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh
+export EDITOR=nvim
 
-# Plugin loading with optimizations
-zinit wait lucid for \
-    atinit"zicompinit; zicdreplay" \
-        zdharma-continuum/fast-syntax-highlighting \
-    atload"_zsh_autosuggest_start" \
-        zsh-users/zsh-autosuggestions \
-    blockf atpull'zinit creinstall -q .' \
-        zsh-users/zsh-completions
+plugins=(
+    sudo
+    git
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-completions
+    zsh-256color
+)
 
-# Additional plugins with lazy loading
-zinit wait lucid for \
-    esc/conda-zsh-completion \
-    hlissner/zsh-autopair \
-    zap-zsh/supercharge \
-    zap-zsh/fzf \
-    Aloxaf/fzf-tab \
-    zap-zsh/exa \
-    zsh-users/zsh-history-substring-search \
-    MichaelAquilina/zsh-you-should-use \
-    Freed-Wu/fzf-tab-source \
-    chivalryq/git-alias \
-    zap-zsh/sudo \
-    kutsan/zsh-system-clipboard \
-    wintermi/zsh-rust
 
-# Initialize tools
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
-eval "$(direnv hook zsh)"
-eval "$(keychain --eval --quiet rpi rpiadmin)"
+# Ensure fzf keybindings are enabled
+source /usr/share/fzf/key-bindings.zsh 2>/dev/null || source ~/.fzf/shell/key-bindings.zsh
 
-# pnpm setup (conditional)
-if (( $+commands[pnpm] )); then
-    export PNPM_HOME="$HOME/.local/share/pnpm"
-    case ":$PATH:" in
-        *":$PNPM_HOME:"*) ;;
-        *) export PATH="$PNPM_HOME:$PATH" ;;
-    esac
-fi
+# Bind keys in ZLE (Zsh Line Editor)
+autoload -Uz select-word-style
+select-word-style bash
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# Bind keys: Ctrl-G -> _fuzzy_change_directory
+fzf_cd_widget() {
+  zle -I
+  _fuzzy_change_directory
+  zle reset-prompt
+}
+zle -N fzf_cd_widget
+bindkey '^G' fzf_cd_widget
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+# Ctrl-F -> _fuzzy_edit_search_file
+fzf_edit_file_widget() {
+  zle -I
+  _fuzzy_edit_search_file
+  zle reset-prompt
+}
+zle -N fzf_edit_file_widget
+bindkey '^F' fzf_edit_file_widget
 
-# pnpm
-export PNPM_HOME="/home/agunthe1/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)
-source <(jj util completion zsh)
-
-export XDG_RUNTIME_DIR=/home/agunthe1
+# Ctrl-E -> _fuzzy_edit_search_file_content
+fzf_edit_content_widget() {
+  zle -I
+  _fuzzy_edit_search_file_content
+  zle reset-prompt
+}
+zle -N fzf_edit_content_widget
+bindkey '^E' fzf_edit_content_widget
