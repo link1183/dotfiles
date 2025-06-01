@@ -1,13 +1,12 @@
 return {
   {
-    "folke/tokyonight.nvim",
-    opts = {
-      transparent = true,
-      style = "night",
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
-    },
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = function()
+      require("gruvbox").setup({
+        transparent_mode = true,
+      })
+      vim.cmd("colorscheme gruvbox")
+    end,
   },
 }
