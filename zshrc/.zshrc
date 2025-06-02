@@ -24,6 +24,8 @@ alias e='exit'
 alias lg='lazygit'
 alias lz='lazydocker'
 alias cat='bat'
+alias t='tmux'
+alias ta='tmux attach -t'
 
 # # Directory navigation shortcuts
 alias ..='cd ..'
