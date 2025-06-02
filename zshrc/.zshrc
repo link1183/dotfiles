@@ -52,7 +52,6 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-completions
-    zsh-256color
 )
 
 
