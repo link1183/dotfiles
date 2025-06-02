@@ -5,3 +5,5 @@ cursor-style-blink = false
 mouse-hide-while-typing = true
 window-decoration = false
 shell-integration-features = no-cursor
+
+config-file = ?./laptop

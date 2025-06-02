@@ -4,3 +4,4 @@ tmux/.config/tmux/plugins
 yazi/.config/yazi/plugins
 ghostty/.config/ghostty/windows
 .local/.local
+ghostty/.config/ghostty/laptop
