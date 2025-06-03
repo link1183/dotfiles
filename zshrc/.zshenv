@@ -1,18 +1,4 @@
 #!/usr/bin/env zsh
-#!          ░▒▓
-#!        ░▒▒░▓▓
-#!      ░▒▒▒░░░▓▓           ___________
-#!    ░░▒▒▒░░░░░▓▓        //___________/
-#!   ░░▒▒▒░░░░░▓▓     _   _ _    _ _____
-#!   ░░▒▒░░░░░▓▓▓▓▓ | | | | |  | |  __/
-#!    ░▒▒░░░░▓▓   ▓▓ | |_| | |_/ /| |___
-#!     ░▒▒░░▓▓   ▓▓   \__  |____/ |____/    ▀█ █▀ █░█
-#!       ░▒▓▓   ▓▓  //____/                █▄ ▄█ █▀█
-
-# HyDE's ZSH env configuration
-# This file is sourced by ZSH on startup
-# And ensures that we have an obstruction-free ~/.zshrc file
-# This also ensures that the proper HyDE $ENVs are loaded
 
 function _load_zsh_plugins {
   unset -f _load_zsh_plugins
@@ -22,46 +8,15 @@ function _load_zsh_plugins {
     "/usr/local/share/oh-my-zsh"
     "/usr/share/oh-my-zsh"
   )
+
   for zsh_path in "${zsh_paths[@]}"; do [[ -d $zsh_path ]] && export ZSH=$zsh_path && break; done
+
   # Load Plugins
   plugins=(git zsh-autosuggestions zsh-syntax-highlighting sudo)
   plugins=($(printf "%s\n" "${plugins[@]}" | sort -u))
+
   # Defer oh-my-zsh loading until after prompt appears
   typeset -g DEFER_OMZ_LOAD=1
-}
-
-# Function to display a slow load warning
-# the intention is for hyprdots users who might have multiple zsh initialization
-function _slow_load_warning {
-  local lock_file="/tmp/.hyde_slow_load_warning.lock"
-  local load_time=$SECONDS
-
-  # Check if the lock file exists
-  if [[ ! -f $lock_file ]]; then
-    # Create the lock file
-    touch $lock_file
-
-    # Display the warning if load time exceeds the limit
-    time_limit=3
-    if ((load_time > time_limit)); then
-      cat <<EOF
-    ⚠️ Warning: Shell startup took more than ${time_limit} seconds. Consider optimizing your configuration.
-        1. This might be due to slow plugins, slow initialization scripts.
-        2. Duplicate plugins initialization.
-            - navigate to ~/.zshrc and remove any 'source ZSH/oh-my-zsh.sh' or
-                'source ~/.oh-my-zsh/oh-my-zsh.sh' lines.
-            - HyDE already sources the oh-my-zsh.sh file for you.
-            - It is important to remove all HyDE related
-                configurations from your .zshrc file as HyDE will handle it for you.
-            - Check the '.zshrc' file from the repo for a clean configuration.
-                https://github.com/HyDE-Project/HyDE/blob/master/Configs/.zshrc
-
-    For more information, on the possible causes of slow shell startup, see:
-        🌐 https://github.com/HyDE-Project/HyDE/wiki
-
-EOF
-    fi
-  fi
 }
 
 # Function to handle initialization errors
@@ -151,7 +106,7 @@ _fuzzy_edit_search_file() {
   fi
 }
 
-_df() {
+df() {
   if [[ $# -ge 1 && -e "${@: -1}" ]]; then
     duf "${@: -1}"
   else
@@ -201,11 +156,9 @@ function _load_if_terminal {
 
     # Load starship immediatly
     if command -v starship &>/dev/null; then
-      # ===== START Initialize Starship prompt =====
       eval "$(starship init zsh)"
       export STARSHIP_CACHE=$XDG_CACHE_HOME/starship
       export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
-    # ===== END Initialize Starship prompt =====
     fi
 
     # Load plugins
@@ -221,51 +174,16 @@ function _load_if_terminal {
     #? Methods to load oh-my-zsh lazily
     __ZDOTDIR="${ZDOTDIR:-$HOME}"
     ZDOTDIR=/tmp
-    zle -N zle-line-init _load_omz_on_init # Loads when the line editor initializes // The best option
-
-    #  Below this line are the commands that are executed after the prompt appears
+    zle -N zle-line-init _load_omz_on_init # Loads when the line editor initializes
 
     autoload -Uz add-zsh-hook
-    # add-zsh-hook zshaddhistory load_omz_deferred # loads after the first command is added to history
-    # add-zsh-hook precmd load_omz_deferred # Loads when shell is ready to accept commands
-    # add-zsh-hook preexec load_omz_deferred # Loads before the first command executes
-
-    # TODO: add handlers in pm.sh
-    # for these aliases please manually add the following lines to your .zshrc file.(Using yay as the aur helper)
-    # pc='yay -Sc' # remove all cached packages
-    # po='yay -Qtdq | ${PM_COMMAND[@]} -Rns -' # remove orphaned packages
-
-    # Warn if the shell is slow to load
-    add-zsh-hook -Uz precmd _slow_load_warning
-
-    alias c='clear' \
-      in='${PM_COMMAND[@]} install' \
-      un='${PM_COMMAND[@]} remove' \
-      up='${PM_COMMAND[@]} upgrade' \
-      pl='${PM_COMMAND[@]} search installed' \
-      pa='${PM_COMMAND[@]} search all' \
-      vc='code' \
-      fastfetch='fastfetch --logo-type kitty' \
-      ..='cd ..' \
-      ...='cd ../..' \
-      .3='cd ../../..' \
-      .4='cd ../../../..' \
-      .5='cd ../../../../..' \
-      mkdir='mkdir -p' \
-      ffec='_fuzzy_edit_search_file_content' \
-      ffcd='_fuzzy_change_directory' \
-      ffe='_fuzzy_edit_search_file' \
-      df='_df'
 
     # Some binds won't work on first prompt when deferred
     bindkey '\e[H' beginning-of-line
     bindkey '\e[F' end-of-line
-
   fi
 
 }
-
-#? Override this environment variable in ~/.zshrc
 
 # cleaning up home folder
 PATH="$HOME/.local/bin:$PATH"
@@ -292,7 +210,7 @@ SCREENRC="$XDG_CONFIG_HOME"/screen/screenrc
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-# History configuration // explicit to not nuke history
+# History configuration
 HISTFILE=${HISTFILE:-$HOME/.zsh_history}
 HISTSIZE=10000
 SAVEHIST=10000
@@ -302,9 +220,6 @@ setopt SHARE_HISTORY          # Share history between all sessions
 setopt HIST_EXPIRE_DUPS_FIRST # Expire a duplicate event first when trimming history
 setopt HIST_IGNORE_DUPS       # Do not record an event that was just recorded again
 setopt HIST_IGNORE_ALL_DUPS   # Delete an old recorded event if a new event is a duplicate
-
-# HyDE Package Manager
-PM_COMMAND=(hyde-shell pm)
 
 export XDG_CONFIG_HOME XDG_CONFIG_DIR XDG_DATA_HOME XDG_STATE_HOME \
   XDG_CACHE_HOME XDG_DESKTOP_DIR XDG_DOWNLOAD_DIR \

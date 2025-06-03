@@ -9,7 +9,7 @@
 corner_radius = 10
 icon_corner_radius = 10
 dmenu = /usr/bin/rofi -config notification -dmenu -p dunst:
-icon_theme = "Tela-circle-dracula,Wallbash-Icon,Tela-circle-dracula,Tela-circle-grey,Tela-circle-pink,Tela-circle-purple,Tela-circle-black,Tela-circle-green,Tela-circle-yellow,Tela-circle-blue,Gruvbox-Plus-Dark,Nordzy"
+icon_theme = "Tela-circle-dracula,Tela-circle-green,Gruvbox-Plus-Dark,Tela-circle-yellow,Tela-circle-pink,Tela-circle-black,Tela-circle-dracula,Nordzy,Wallbash-Icon,Tela-circle-grey,Tela-circle-blue,Tela-circle-purple"
 
 
 # [Type-1]
