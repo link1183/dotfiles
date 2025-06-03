@@ -48,14 +48,6 @@ alias nvimrc='cd ~/.config/nvim && nvim .'
 
 export EDITOR=nvim
 
-plugins=(
-    sudo
-    git
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    zsh-completions
-)
-
 # Bind keys: Ctrl-G -> _fuzzy_change_directory
 fzf_cd_widget() {
   zle -I

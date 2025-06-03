@@ -12,7 +12,14 @@ function _load_zsh_plugins {
   for zsh_path in "${zsh_paths[@]}"; do [[ -d $zsh_path ]] && export ZSH=$zsh_path && break; done
 
   # Load Plugins
-  plugins=(git zsh-autosuggestions zsh-syntax-highlighting sudo)
+  plugins=(
+    git
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    sudo
+    zsh-completions
+  )
+
   plugins=($(printf "%s\n" "${plugins[@]}" | sort -u))
 
   # Defer oh-my-zsh loading until after prompt appears
