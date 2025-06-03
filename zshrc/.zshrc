@@ -3,7 +3,6 @@ export aurhelper='yay'
 #  Aliases 
 alias c='clear'                                                        # clear terminal
 alias la='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
-alias ld='eza -lhD --icons=auto'                                       # long list dirs
 alias lt='eza --icons=auto --tree'                                     # list folder as tree
 alias un='$aurhelper -Rns'                                             # uninstall package
 alias up='$aurhelper -Syu'                                             # update system/package/aur
