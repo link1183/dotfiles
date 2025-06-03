@@ -67,5 +67,3 @@ fzf_edit_content_widget() {
 }
 zle -N fzf_edit_content_widget
 bindkey '^E' fzf_edit_content_widget
-
-zprof

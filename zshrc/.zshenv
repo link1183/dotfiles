@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-zmodload zsh/zprof
-
 function _load_zsh_plugins {
   unset -f _load_zsh_plugins
   # Oh-my-zsh installation path
