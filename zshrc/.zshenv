@@ -24,10 +24,7 @@ function _load_zsh_plugins {
   )
   for zsh_path in "${zsh_paths[@]}"; do [[ -d $zsh_path ]] && export ZSH=$zsh_path && break; done
   # Load Plugins
-  hyde_plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
-  plugins+=("${plugins[@]}" "${hyde_plugins[@]}")
-  # Deduplicate plugins
-  plugins=("${plugins[@]}")
+  plugins=(git zsh-autosuggestions zsh-syntax-highlighting sudo)
   plugins=($(printf "%s\n" "${plugins[@]}" | sort -u))
   # Defer oh-my-zsh loading until after prompt appears
   typeset -g DEFER_OMZ_LOAD=1
@@ -202,8 +199,7 @@ function _load_if_terminal {
 
     unset -f _load_if_terminal
 
-    # Currently We are loading Starship and p10k prompts on start so users can see the prompt immediately
-
+    # Load starship immediatly
     if command -v starship &>/dev/null; then
       # ===== START Initialize Starship prompt =====
       eval "$(starship init zsh)"
@@ -212,15 +208,15 @@ function _load_if_terminal {
     # ===== END Initialize Starship prompt =====
     fi
 
-    # Optionally load user configuration // useful for customizing the shell without modifying the main file
-    if [[ -f $HOME/.hyde.zshrc ]]; then
-      source $HOME/.hyde.zshrc # for backward compatibility
-    fi
-
     # Load plugins
     _load_zsh_plugins
 
-    # Load zsh hooks module once
+    # Ensure fzf keybindings are enabled
+    source /usr/share/fzf/key-bindings.zsh 2>/dev/null || source ~/.fzf/shell/key-bindings.zsh
+
+    # Bind keys in ZLE (Zsh Line Editor)
+    autoload -Uz select-word-style
+    select-word-style bash
 
     #? Methods to load oh-my-zsh lazily
     __ZDOTDIR="${ZDOTDIR:-$HOME}"

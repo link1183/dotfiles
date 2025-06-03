@@ -37,6 +37,8 @@ alias .5='cd ../../../../..'
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
 
+alias rmrf='rm -rf'
+
 # yazi
 alias y='yazi'
 
@@ -53,14 +55,6 @@ plugins=(
     zsh-syntax-highlighting
     zsh-completions
 )
-
-
-# Ensure fzf keybindings are enabled
-source /usr/share/fzf/key-bindings.zsh 2>/dev/null || source ~/.fzf/shell/key-bindings.zsh
-
-# Bind keys in ZLE (Zsh Line Editor)
-autoload -Uz select-word-style
-select-word-style bash
 
 # Bind keys: Ctrl-G -> _fuzzy_change_directory
 fzf_cd_widget() {
