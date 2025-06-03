@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+zmodload zsh/zprof
+
 function _load_zsh_plugins {
   unset -f _load_zsh_plugins
   # Oh-my-zsh installation path
@@ -40,7 +42,7 @@ function no_such_file_or_directory_handler {
 }
 
 function _load_omz_on_init() {
-  # Load oh-my-zsh when line editor initializes // before user input
+  # Load oh-my-zsh when line editor initializes
   if [[ -n $DEFER_OMZ_LOAD ]]; then
     unset DEFER_OMZ_LOAD
     [[ -r $ZSH/oh-my-zsh.sh ]] && source $ZSH/oh-my-zsh.sh
@@ -122,9 +124,6 @@ df() {
 }
 
 function _load_post_init() {
-  #! Never load time consuming functions here
-  autoload -U compinit && compinit
-
   # Load hydectl completion
   if command -v hydectl &>/dev/null; then
     compdef _hydectl hydectl

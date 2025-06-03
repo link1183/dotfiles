@@ -1,13 +1,6 @@
-# Add user configurations here
-# For HyDE to not touch your beloved configurations,
-# we added 2 files to the project structure:
-# 1. ~/.user.zsh - for customizing the shell related hyde configurations
-# 2. ~/.zshenv - for updating the zsh environment variables handled by HyDE // this will be modified across updates
-
 export aurhelper='yay'
 
 #  Aliases 
-# Add aliases here
 alias c='clear'                                                        # clear terminal
 alias la='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
 alias ld='eza -lhD --icons=auto'                                       # long list dirs
@@ -74,3 +67,5 @@ fzf_edit_content_widget() {
 }
 zle -N fzf_edit_content_widget
 bindkey '^E' fzf_edit_content_widget
+
+zprof
