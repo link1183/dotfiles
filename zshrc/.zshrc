@@ -1,4 +1,6 @@
 export aurhelper='yay'
+export CC="cc"
+export CXX="c++"
 
 #  Aliases 
 alias c='clear'                                                        # clear terminal

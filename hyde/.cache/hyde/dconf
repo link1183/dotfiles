@@ -28,8 +28,8 @@ xkb-options=['terminate:ctrl_alt_bksp']
 
 [org/gnome/desktop/interface]
 color-scheme='prefer-dark'
-cursor-size=20
-cursor-theme='Gruvbox-Retro'
+cursor-size=24
+cursor-theme='default'
 document-font-name='Cantarell 10'
 font-antialiasing='rgba'
 font-hinting='full'
