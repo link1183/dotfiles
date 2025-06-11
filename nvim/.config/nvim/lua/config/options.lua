@@ -19,8 +19,6 @@ vim.g.deprecation_warnings = false
 -- Show the current document symbols location from Trouble in lualine
 vim.g.trouble_lualine = true
 
-vim.diagnostic.config({ virtual_text = true, virtual_lines = true })
-
 local opt = vim.opt
 
 opt.autowrite = true -- Enable auto write
