@@ -236,4 +236,6 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
+export PATH="$PATH:$HOME/go/bin"
+
 _load_if_terminal
