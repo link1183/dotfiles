@@ -35,6 +35,10 @@ return {
             name = "Games",
             path = "~/projects/github/games-notes",
           },
+          {
+            name = "RP",
+            path = "~/projects/github/vaults/rp",
+          },
         },
         completion = {
           min_chars = 0,

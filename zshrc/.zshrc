@@ -68,3 +68,15 @@ fzf_edit_content_widget() {
 }
 zle -N fzf_edit_content_widget
 bindkey '^E' fzf_edit_content_widget
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
+# pnpm
+export PNPM_HOME="/home/agunthe1/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
