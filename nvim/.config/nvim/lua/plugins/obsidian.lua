@@ -29,15 +29,15 @@ return {
         workspaces = {
           {
             name = "Personal",
-            path = "~/projects/github/vaults/personal",
+            path = "/home/agunthe1/projects/github/vaults/personal",
           },
           {
             name = "Games",
-            path = "~/projects/github/games-notes",
+            path = "/home/agunthe1/projects/github/games-notes",
           },
           {
             name = "RP",
-            path = "~/projects/github/vaults/rp",
+            path = "/home/agunthe1/projects/github/vaults/rp",
           },
         },
         completion = {
