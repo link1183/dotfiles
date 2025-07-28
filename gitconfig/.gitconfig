@@ -41,3 +41,8 @@
 	email = adrien.gunther@gmail.com
 	name = link1183
 	mail = adrien.gunther@gmail.com
+	signingkey = /home/agunthe1/.ssh/id_ed25519.pub
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
