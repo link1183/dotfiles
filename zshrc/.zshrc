@@ -42,15 +42,6 @@ alias nvimrc='cd ~/.config/nvim && nvim .'
 
 export EDITOR=nvim
 
-# Bind keys: Ctrl-G -> _fuzzy_change_directory
-fzf_cd_widget() {
-  zle -I
-  _fuzzy_change_directory
-  zle reset-prompt
-}
-zle -N fzf_cd_widget
-bindkey '^G' fzf_cd_widget
-
 # Ctrl-F -> _fuzzy_edit_search_file
 fzf_edit_file_widget() {
   zle -I

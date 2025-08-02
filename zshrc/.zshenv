@@ -49,28 +49,6 @@ function _load_omz_on_init() {
   fi
 }
 
-# Key: C-g
-_fuzzy_change_directory() {
-  local initial_query="$1"
-  local selected_dir
-  local fzf_options=('--preview=ls -p {}' '--preview-window=right:60%' '--height=80%' '--layout=reverse' '--cycle')
-
-  if [[ -n "$initial_query" ]]; then
-    fzf_options+=("--query=$initial_query")
-  fi
-
-  selected_dir=$(fd --type d --hidden --follow --no-ignore \
-    --exclude .git --exclude node_modules --exclude .venv --exclude target --exclude .cache \
-    "." "$HOME" 2>/dev/null |
-    fzf "${fzf_options[@]}")
-
-  if [[ -n "$selected_dir" && -d "$selected_dir" ]]; then
-    cd "$selected_dir" || return 1
-  else
-    return 1
-  fi
-}
-
 # Key: C-e
 _fuzzy_edit_search_file_content() {
   local selected_file
