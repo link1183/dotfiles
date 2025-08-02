@@ -70,28 +70,24 @@ style = 2
 
 [battery.notify]
 # batterynotify.sh configuration
-timer = 120
+timer = 500
 notify = 1140
 interval = 5
 dock = true
 
 [battery.notify.threshold]
-full = 90
-critical = 10
 low = 20
-unplug = 80
-
+critical = 10
 
 [battery.notify.execute]
 unplug = ""
 low = ""
-critical = "systemctl suspend"
+critical = "systemctl hybrid-sleep"
 charging = ""
 discharging = ""
 
 [keybind.hint]
 # keybind.hint.py configuration
-
 
 [rofi.keybind.hint]
 # keybind_hint.sh configuration
@@ -103,14 +99,6 @@ line = 16
 [screenshot]
 # screenshot.sh configuration
 annotation_tool = "swappy" # Annotation tool
-annotation_pre_command = [
-  # 'shader=$(hyprshade current) && hyprshade off && trap restore_shader EXIT', # Use this when you're using hyprshade
-] # Pre command for annotation tool
-annotation_post_command = [
-  # "[ -n \"\\$shader\" ] && hyprshade on \\$shader", # Use this when you're using hyprshade
-  "",
-] # Post command for annotation tool
-
 
 [rofi.bookmark]
 file = "$HOME/.config/hyde/bookmarks.lst"
@@ -127,15 +115,14 @@ skip_template = [
 [waybar]
 font = "JetBrainsMono Nerd Font"
 scale = 30                       # total scaling
-# output = ["", ""]                     # Default monitor output for waybar
 
 [weather]
 temperature_unit = 'c'  # Temperature unit to °C or °F ('c' or 'f')
 time_format = '24h'     # Time format ('12h or 24h')
 windspeed_unit = 'km/h' # Windspeed unit ('kh/h' or 'mph')
-show_icon = true        # Show the weather icon in waybar
-show_location = true    # Show the location in waybar
-show_today = true       # Detailed description of today in tooltip
+show_icon = false       # Show the weather icon in waybar
+show_location = false   # Show the location in waybar
+show_today = false      # Detailed description of today in tooltip
 forecast_days = 3       # Number of days to show forecast (0-3)
 location = ''           # Location/coordinates string for the weather output
 
@@ -162,7 +149,6 @@ bar = "▁▂▃▄▅▆▇█"
 width = 20
 range = 7
 standby = "🎶"
-
 
 [hypr.config]
 # List of regex to sanitize in the theme.config // Useful for deprecated options to be removed from the theme.config

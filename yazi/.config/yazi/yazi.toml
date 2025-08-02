@@ -25,99 +25,25 @@ cache_dir = ""
 image_delay = 30
 image_filter = "triangle"
 image_quality = 75
-sixel_fraction = 15
 ueberzug_scale = 1
 ueberzug_offset = [0, 0, 0, 0]
 
 [opener]
 edit = [
   { run = '${EDITOR:-vi} "$@"', desc = "$EDITOR", block = true, for = "unix" },
-  { run = 'code %*', orphan = true, desc = "code", for = "windows" },
-  { run = 'code -w %*', block = true, desc = "code (block)", for = "windows" },
 ]
-open = [
-  { run = 'xdg-open "$1"', desc = "Open", for = "linux" },
-  { run = 'open "$@"', desc = "Open", for = "macos" },
-  { run = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" },
-]
+open = [{ run = 'xdg-open "$1"', desc = "Open", for = "linux" }]
 reveal = [
   { run = 'xdg-open "$(dirname "$1")"', desc = "Reveal", for = "linux" },
-  { run = 'open -R "$1"', desc = "Reveal", for = "macos" },
-  { run = 'explorer /select,"%1"', orphan = true, desc = "Reveal", for = "windows" },
   { run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 extract = [
   { run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
-  { run = 'ya pub extract --list %*', desc = "Extract here", for = "windows" },
 ]
 play = [
   { run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
-  { run = 'mpv --force-window %*', orphan = true, for = "windows" },
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
 ]
-
-[open]
-rules = [
-  # Folder
-  { name = "*/", use = [
-    "edit",
-    "open",
-    "reveal",
-  ] },
-  # Text
-  { mime = "text/*", use = [
-    "edit",
-    "reveal",
-  ] },
-  # Image
-  { mime = "image/*", use = [
-    "open",
-    "reveal",
-  ] },
-  # Media
-  { mime = "{audio,video}/*", use = [
-    "play",
-    "reveal",
-  ] },
-  # Archive
-  { mime = "application/{,g}zip", use = [
-    "extract",
-    "reveal",
-  ] },
-  { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", use = [
-    "extract",
-    "reveal",
-  ] },
-  # JSON
-  { mime = "application/{json,x-ndjson}", use = [
-    "edit",
-    "reveal",
-  ] },
-  { mime = "*/javascript", use = [
-    "edit",
-    "reveal",
-  ] },
-  # Empty file
-  { mime = "inode/x-empty", use = [
-    "edit",
-    "reveal",
-  ] },
-  # Fallback
-  { name = "*", use = [
-    "open",
-    "reveal",
-  ] },
-]
-
-[tasks]
-micro_workers = 10
-macro_workers = 25
-bizarre_retry = 5
-image_alloc = 536870912  # 512MB
-image_bound = [0, 0]
-suppress_preload = false
-
-[plugin]
 
 fetchers = [
   # Mimetype
@@ -224,16 +150,8 @@ quit_content = "The following task is still running, are you sure you want to qu
 quit_origin = "center"
 quit_offset = [0, 0, 50, 15]
 
-[select]
-open_title = "Open with:"
-open_origin = "hovered"
-open_offset = [0, 1, 50, 7]
-
 [which]
 sort_by = "none"
 sort_sensitive = false
 sort_reverse = false
 sort_translit = false
-
-[log]
-enabled = false
