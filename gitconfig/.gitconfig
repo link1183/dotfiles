@@ -1,10 +1,3 @@
-[includeIf "gitdir:~/projects/github/"]
-  path = .gitconfig-github
-  name = Personal
-
-[includeIf "gitdir:~/projects/gitlab/"]
-  path = .gitconfig-gitlab
-  name = Work
 [core]
   pager = diff-so-fancy | less --tabs=4 -RF
 [interactive]
