@@ -1,3 +1,10 @@
+[includeIf "gitdir:~/projects/github/"]
+  path = .gitconfig-github
+  name = Personal
+
+[includeIf "gitdir:~/projects/gitlab/"]
+  path = .gitconfig-gitlab
+  name = Work
 [core]
   pager = diff-so-fancy | less --tabs=4 -RF
 [interactive]
@@ -34,8 +41,8 @@
   email = adrien.gunther@gmail.com
   name = link1183
   mail = adrien.gunther@gmail.com
-	signingkey = /home/agunthe1/.ssh/id_ed25519.pub
+  signingkey = /home/agunthe1/.ssh/id_ed25519.pub
 [commit]
-	gpgsign = true
+  gpgsign = true
 [gpg]
-	format = ssh
+  format = ssh
