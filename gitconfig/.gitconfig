@@ -38,11 +38,6 @@
 [pull]
   rebase = true
 [user]
-  email = adrien.gunther@gmail.com
   name = link1183
   mail = adrien.gunther@gmail.com
   signingkey = /home/agunthe1/.ssh/id_ed25519
-[commit]
-  gpgsign = true
-[gpg]
-  format = ssh
