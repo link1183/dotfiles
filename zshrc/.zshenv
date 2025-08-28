@@ -217,3 +217,4 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export PATH="$PATH:$HOME/go/bin"
 
 _load_if_terminal
+export PATH="$HOME/development/flutter/bin:$PATH"
