@@ -218,3 +218,4 @@ export PATH="$PATH:$HOME/go/bin"
 
 _load_if_terminal
 export PATH="$HOME/development/flutter/bin:$PATH"
+export PATH="$HOME/.config/composer/vendor/bin:$PATH"
