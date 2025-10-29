@@ -7,7 +7,7 @@
   border: none;
   border-radius: 0;
   min-height: 0;
-  font-family: CaskaydiaMono Nerd Font;
+  font-family: CaskaydiaMono Nerd Font Propo;
   font-size: 12px;
 }
 
@@ -23,11 +23,6 @@
   all: initial;
   padding: 0 6px;
   margin: 0 1.5px;
-  min-width: 9px;
-}
-
-#workspaces button.empty {
-  opacity: 0.5;
 }
 
 #tray,
@@ -36,39 +31,16 @@
 #network,
 #bluetooth,
 #pulseaudio,
-#custom-omarchy,
-#custom-screenrecording-indicator,
-#custom-update {
+#clock,
+#custom-power-menu {
   min-width: 12px;
   margin: 0 7.5px;
 }
 
 #custom-expand-icon {
-  margin-right: 7px;
+  margin-right: 12px;
 }
 
 tooltip {
   padding: 2px;
-}
-
-#custom-update {
-  font-size: 10px;
-}
-
-#clock {
-  margin-left: 8.75px;
-}
-
-.hidden {
-  opacity: 0;
-}
-
-#custom-screenrecording-indicator {
-  min-width: 12px;
-  margin-left: 8.75px;
-  font-size: 10px;
-}
-
-#custom-screenrecording-indicator.active {
-  color: #a55555;
 }
