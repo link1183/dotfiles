@@ -6,12 +6,6 @@ export CXX="c++"
 alias c='clear'                                                        # clear terminal
 alias la='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
 alias lt='eza --icons=auto --tree'                                     # list folder as tree
-alias un='$aurhelper -Rns'                                             # uninstall package
-alias up='$aurhelper -Syu'                                             # update system/package/aur
-alias pl='$aurhelper -Qs'                                              # list installed package
-alias pa='$aurhelper -Ss'                                              # list available package
-alias pc='$aurhelper -Sc'                                              # remove unused cache
-alias po='$aurhelper -Qtdq | $aurhelper -Rns -'                        # remove unused packages, also try > $aurhelper -Qqd | $aurhelper -Rsu --print -
 alias v='nvim'
 alias v.='nvim .'
 alias e='exit'
@@ -76,3 +70,5 @@ source /home/agunthe1/.oh-my-zsh/custom/plugins/fzf-tab-completion/zsh/fzf-zsh-c
 
 eval "$(ssh-agent -s)" >/dev/null 2>&1
 ssh-add ~/.ssh/id_ed25519 >/dev/null 2>&1
+
+. "$HOME/.local/share/../bin/env"
