@@ -1,4 +1,3 @@
-export aurhelper='yay'
 export CC="cc"
 export CXX="c++"
 
@@ -14,6 +13,7 @@ alias lz='lazydocker'
 alias cat='bat'
 alias t='tmux'
 alias ta='tmux attach -t'
+alias up='yay -Syu'
 
 # # Directory navigation shortcuts
 alias ..='cd ..'
