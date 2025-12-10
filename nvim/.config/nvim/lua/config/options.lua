@@ -97,3 +97,4 @@ end
 vim.g.markdown_recommended_style = 0
 
 vim.g.snacks_animate = false
+vim.g.lazyvim_php_lsp = "intelephense"
