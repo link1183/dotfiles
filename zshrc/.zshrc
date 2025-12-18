@@ -71,4 +71,3 @@ source /home/agunthe1/.oh-my-zsh/custom/plugins/fzf-tab-completion/zsh/fzf-zsh-c
 eval "$(ssh-agent -s)" >/dev/null 2>&1
 ssh-add ~/.ssh/id_ed25519 >/dev/null 2>&1
 
-. "$HOME/.local/share/../bin/env"
