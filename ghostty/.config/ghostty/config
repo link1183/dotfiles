@@ -3,7 +3,15 @@ theme = Gruvbox Dark
 cursor-style = block
 cursor-style-blink = false
 mouse-hide-while-typing = true
-window-decoration = false
+window-decoration = none
 shell-integration-features = no-cursor
 
+link-url = true
+link-previews = true
+focus-follows-mouse = true
+
+window-theme = ghostty
 config-file = ?./laptop
+quick-terminal-position = bottom
+keybind=alt+space=toggle_quick_terminal
+keybind=alt+r=reload_config
