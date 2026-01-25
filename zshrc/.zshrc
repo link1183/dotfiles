@@ -34,8 +34,6 @@ alias y='yazi'
 alias zshrc='cd && nvim ~/.zshrc'
 alias nvimrc='cd ~/.config/nvim && nvim .'
 
-export EDITOR=nvim
-
 # Ctrl-F -> _fuzzy_edit_search_file
 fzf_edit_file_widget() {
   zle -I
@@ -54,20 +52,11 @@ fzf_edit_content_widget() {
 zle -N fzf_edit_content_widget
 bindkey '^E' fzf_edit_content_widget
 
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)
-
-# pnpm
-export PNPM_HOME="/home/agunthe1/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
 source /home/agunthe1/.oh-my-zsh/custom/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
 
 eval "$(ssh-agent -s)" >/dev/null 2>&1
 ssh-add ~/.ssh/id_ed25519 >/dev/null 2>&1
 
+eval "$(direnv hook zsh)"
+
+. "$HOME/.local/share/../bin/env"

@@ -31,14 +31,6 @@ return {
             name = "Personal",
             path = "/home/agunthe1/projects/github/vaults/personal",
           },
-          {
-            name = "Games",
-            path = "/home/agunthe1/projects/github/games-notes",
-          },
-          {
-            name = "RP",
-            path = "/home/agunthe1/projects/github/vaults/rp",
-          },
         },
         completion = {
           min_chars = 0,
