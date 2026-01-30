@@ -52,11 +52,7 @@ fzf_edit_content_widget() {
 zle -N fzf_edit_content_widget
 bindkey '^E' fzf_edit_content_widget
 
-source /home/agunthe1/.oh-my-zsh/custom/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
-
 eval "$(ssh-agent -s)" >/dev/null 2>&1
 ssh-add ~/.ssh/id_ed25519 >/dev/null 2>&1
 
 eval "$(direnv hook zsh)"
-
-. "$HOME/.local/share/../bin/env"

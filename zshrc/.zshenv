@@ -15,7 +15,8 @@ function _load_zsh_plugins {
   plugins=(
     git
     zsh-autosuggestions
-    zsh-syntax-highlighting
+    fast-syntax-highlighting
+    fzf-tab
     sudo
     zsh-completions
   )
