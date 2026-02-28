@@ -1,12 +1,10 @@
 -- Local and global leaders
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.autoformat = false
 
 -- Tell Neovim I have a Nerd font installed
 vim.g.have_nerd_font = true
-
--- LazyVim auto format
-vim.g.autoformat = true
 
 -- LazyVim root dir detection
 vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
