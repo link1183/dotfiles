@@ -15,3 +15,6 @@ config-file = ?./laptop
 quick-terminal-position = bottom
 keybind=alt+space=toggle_quick_terminal
 keybind=alt+r=reload_config
+
+# Fix general slowness on hyprland (https://github.com/ghostty-org/ghostty/discussions/3224)
+async-backend = epoll
