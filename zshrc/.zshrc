@@ -1,10 +1,48 @@
-export CC="cc"
-export CXX="c++"
+# --------------------------------------------------
+# Prompt
+# --------------------------------------------------
+if command -v starship &>/dev/null; then
+  eval "$(starship init zsh)"
+  export STARSHIP_CACHE="$XDG_CACHE_HOME/starship"
+  export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+fi
 
-#  Aliases 
-alias c='clear'                                                        # clear terminal
-alias la='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
-alias lt='eza --icons=auto --tree'                                     # list folder as tree
+# --------------------------------------------------
+# Oh My Zsh
+# --------------------------------------------------
+export ZSH="$HOME/.oh-my-zsh"
+
+plugins=(
+  git
+  zsh-autosuggestions
+  fast-syntax-highlighting
+  fzf-tab
+  sudo
+  zsh-completions
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# --------------------------------------------------
+# Tools
+# --------------------------------------------------
+
+# fzf
+command -v fzf &>/dev/null && eval "$(fzf --zsh)"
+
+# zoxide
+command -v zoxide &>/dev/null && eval "$(zoxide init zsh --cmd cd)"
+
+# direnv
+command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
+
+# --------------------------------------------------
+# Aliases
+# --------------------------------------------------
+
+alias c='clear'
+alias la='eza -lha --icons=auto --sort=name --group-directories-first'
+alias lt='eza --icons=auto --tree'
 alias v='nvim'
 alias v.='nvim .'
 alias e='exit'
@@ -14,15 +52,29 @@ alias cat='bat'
 alias up='yay -Syu'
 alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 alias eff='$EDITOR "$(ff)"'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+alias mkdir='mkdir -p'
+alias rmrf='rm -rf'
+alias y='yazi'
+alias zshrc='nvim ~/.zshrc'
+alias nvimrc='nvim ~/.config/nvim'
+
+# --------------------------------------------------
+# Functions
+# --------------------------------------------------
 
 compress() { tar -czf "${1%/}.tar.gz" "${1%/}"; }
 alias decompress="tar -xzf"
 
-open() (
-  xdg-open "$@" >/dev/null 2>&1 &
-)
+open() { xdg-open "$@" >/dev/null 2>&1 & }
 
-# Write iso file to sd card
+df() { command -v duf &>/dev/null && duf "$@" || command df "$@"; }
+
+# ISO to SD
 iso2sd() {
   if (( $# < 1 )); then
     echo "Usage: iso2sd <input_file> [output_device]"
@@ -49,11 +101,14 @@ iso2sd() {
     fi
   fi
 
+  lsblk "$drive"
+  read -rp "Write to $drive? This will destroy data. (yes/no): " confirm
+  [[ $confirm == yes ]] || return 1
+
   sudo dd bs=4M status=progress oflag=sync if="$iso" of="$drive"
   sudo eject "$drive"
 }
 
-# Format an entire drive for a single partition using exFAT
 format-drive() {
   if (( $# != 2 )); then
     echo "Usage: format-drive <device> <name>"
@@ -82,90 +137,31 @@ format-drive() {
   fi
 }
 
-# # Directory navigation shortcuts
-alias ..='cd ..'
-alias ...='cd ../..'
-alias .3='cd ../../..'
-alias .4='cd ../../../..'
-alias .5='cd ../../../../..'
-
-# Always mkdir a path (this doesn't inhibit functionality to make a single dir)
-alias mkdir='mkdir -p'
-
-alias rmrf='rm -rf'
-
-# yazi
-alias y='yazi'
-
-# Config aliases
-alias zshrc='cd && nvim ~/.zshrc'
-alias nvimrc='cd ~/.config/nvim && nvim .'
-
-# Ctrl-F -> _fuzzy_edit_search_file
-fzf_edit_file_widget() {
-  zle -I
-  _fuzzy_edit_search_file
-  zle reset-prompt
-}
-zle -N fzf_edit_file_widget
-bindkey '^F' fzf_edit_file_widget
-
-# Ctrl-E -> _fuzzy_edit_search_file_content
-fzf_edit_content_widget() {
-  zle -I
-  _fuzzy_edit_search_file_content
-  zle reset-prompt
-}
-zle -N fzf_edit_content_widget
-bindkey '^E' fzf_edit_content_widget
-
-eval "$(ssh-agent -s)" >/dev/null 2>&1
-ssh-add ~/.ssh/id_ed25519 >/dev/null 2>&1
-
-eval "$(direnv hook zsh)"
-
-# Transcode a video to a good-balance 1080p that's great for sharing online
 transcode-video-1080p() {
   ffmpeg -i "$1" -vf scale=1920:1080 -c:v libx264 -preset fast -crf 23 -c:a copy "${1%.*}-1080p.mp4"
 }
 
-# Transcode a video to a good-balance 4K that's great for sharing online
 transcode-video-4K() {
   ffmpeg -i "$1" -c:v libx265 -preset slow -crf 24 -c:a aac -b:a 192k "${1%.*}-optimized.mp4"
 }
 
-# Transcode any image to JPG image that's great for shrinking wallpapers
 img2jpg() {
-  img="$1"
-  shift
-
-  magick "$img" "$@" -quality 95 -strip "${img%.*}-converted.jpg"
+  magick "$1" -quality 95 -strip "${1%.*}-converted.jpg"
 }
 
-# Transcode any image to a small JPG (max 1080px wide) that's great for sharing online
 img2jpg-small() {
-  img="$1"
-  shift
-
-  magick "$img" "$@" -resize 1080x\> -quality 95 -strip "${img%.*}-small.jpg"
+  magick "$1" -resize 1080x\> -quality 95 -strip "${1%.*}-small.jpg"
 }
 
-# Transcode any image to a medium JPG (max 1800px wide) that's great for sharing online
 img2jpg-medium() {
-  img="$1"
-  shift
-
-  magick "$img" "$@" -resize 1800x\> -quality 95 -strip "${img%.*}-medium.jpg"
+  magick "$1" -resize 1800x\> -quality 95 -strip "${1%.*}-medium.jpg"
 }
 
-# Transcode any image to compressed-but-lossless PNG
 img2png() {
-  img="$1"
-  shift
-
-  magick "$img" "$@" -strip -define png:compression-filter=5 \
+  magick "$1" -strip \
+    -define png:compression-filter=5 \
     -define png:compression-level=9 \
     -define png:compression-strategy=1 \
     -define png:exclude-chunk=all \
-    "${img%.*}-optimized.png"
+    "${1%.*}-optimized.png"
 }
