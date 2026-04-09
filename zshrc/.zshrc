@@ -165,3 +165,16 @@ img2png() {
     -define png:exclude-chunk=all \
     "${1%.*}-optimized.png"
 }
+eval "$(tv init zsh)"
+
+# pnpm
+export PNPM_HOME="/home/agunthe1/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+#
+export PATH=$PATH:$HOME/tizen-studio/tools/ide/bin
+export PATH=$PATH:$HOME/tizen-studio/tools
+export PATH=$PATH:$HOME/tizen-studio/package-manager

@@ -1,7 +1,7 @@
 -- Local and global leaders
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.g.autoformat = false
+vim.g.autoformat = true
 
 -- Tell Neovim I have a Nerd font installed
 vim.g.have_nerd_font = true
