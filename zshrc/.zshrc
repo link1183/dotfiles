@@ -178,3 +178,5 @@ esac
 export PATH=$PATH:$HOME/tizen-studio/tools/ide/bin
 export PATH=$PATH:$HOME/tizen-studio/tools
 export PATH=$PATH:$HOME/tizen-studio/package-manager
+
+eval "$(gtasks completion zsh)"
