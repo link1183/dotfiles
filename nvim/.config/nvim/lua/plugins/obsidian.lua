@@ -15,34 +15,4 @@ return {
       vim.cmd([[do FileType]])
     end,
   },
-  {
-    "obsidian-nvim/obsidian.nvim",
-    version = "*",
-    lazy = true,
-    ft = "markdown",
-    dependencies = {
-      -- Required.
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      require("obsidian").setup({
-        workspaces = {
-          {
-            name = "Personal",
-            path = "/home/agunthe1/projects/github/vaults/personal",
-          },
-        },
-        completion = {
-          min_chars = 0,
-          nvim_cmp = false,
-          blink = true,
-          match_case = false,
-        },
-        ui = {
-          enable = false,
-        },
-        new_notes_location = "current_dir",
-      })
-    end,
-  },
 }
