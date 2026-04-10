@@ -180,3 +180,4 @@ export PATH=$PATH:$HOME/tizen-studio/tools
 export PATH=$PATH:$HOME/tizen-studio/package-manager
 
 eval "$(gtasks completion zsh)"
+eval "$(tv init zsh)"
