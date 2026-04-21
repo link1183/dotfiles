@@ -29,9 +29,7 @@ ueberzug_scale = 1
 ueberzug_offset = [0, 0, 0, 0]
 
 [opener]
-edit = [
-  { run = '${EDITOR:-vi} "$@"', desc = "$EDITOR", block = true, for = "unix" },
-]
+edit = [{ run = 'nvim "$@"', desc = "nvim", block = true, for = "unix" }]
 open = [{ run = 'xdg-open "$1"', desc = "Open", for = "linux" }]
 reveal = [
   { run = 'xdg-open "$(dirname "$1")"', desc = "Reveal", for = "linux" },
@@ -126,29 +124,6 @@ search_offset = [0, 2, 50, 3]
 shell_title = ["Shell:", "Shell (block):"]
 shell_origin = "top-center"
 shell_offset = [0, 2, 50, 3]
-
-[confirm]
-# trash
-trash_title = "Trash {n} selected file{s}?"
-trash_origin = "center"
-trash_offset = [0, 0, 70, 20]
-
-# delete
-delete_title = "Permanently delete {n} selected file{s}?"
-delete_origin = "center"
-delete_offset = [0, 0, 70, 20]
-
-# overwrite
-overwrite_title = "Overwrite file?"
-overwrite_content = "Will overwrite the following file:"
-overwrite_origin = "center"
-overwrite_offset = [0, 0, 50, 15]
-
-# quit
-quit_title = "Quit?"
-quit_content = "The following task is still running, are you sure you want to quit?"
-quit_origin = "center"
-quit_offset = [0, 0, 50, 15]
 
 [which]
 sort_by = "none"
