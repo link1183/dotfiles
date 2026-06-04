@@ -1,3 +1,7 @@
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
 # --------------------------------------------------
 # Prompt
 # --------------------------------------------------
@@ -41,6 +45,7 @@ command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
 # --------------------------------------------------
 
 alias c='clear'
+alias t='tmux'
 alias la='eza -lha --icons=auto --sort=name --group-directories-first'
 alias lt='eza --icons=auto --tree'
 alias v='nvim'
@@ -181,3 +186,15 @@ export PATH=$PATH:$HOME/tizen-studio/package-manager
 
 eval "$(gtasks completion zsh)"
 eval "$(tv init zsh)"
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+export EDITOR=nvim
