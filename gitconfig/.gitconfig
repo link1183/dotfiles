@@ -1,6 +1,13 @@
-[includeIf "gitdir:~/projects/github/"]
+[user]
+  name = link1183
+  email = adrien.gunther@gmail.com
+  signingkey = /home/agunthe1/.ssh/id_ed25519
+
+[includeIf "gitdir:/home/agunthe1/projects/github/"]
   path = .gitconfig-github
-  name = Personal
+
+[includeIf "gitdir:/home/agunthe1/projects/gitlab/"]
+  path = /home/agunthe1/.gitconfig-gitlab
 
 [core]
   pager = diff-so-fancy | less --tabs=4 -RF
@@ -35,7 +42,3 @@
   defaultbranch = main
 [pull]
   rebase = true
-[user]
-  name = link1183
-  email = adrien.gunther@gmail.com
-  signingkey = /home/agunthe1/.ssh/id_ed25519
