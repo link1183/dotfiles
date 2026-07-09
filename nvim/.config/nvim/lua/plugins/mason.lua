@@ -14,8 +14,6 @@ return {
           "docker-compose-language-service",
           "dockerfile-language-server",
           "eslint-lsp",
-          "fantomas",
-          "fsautocomplete",
           "gofumpt",
           "goimports",
           "golangci-lint",
