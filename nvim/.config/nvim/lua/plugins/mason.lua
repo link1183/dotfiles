@@ -1,6 +1,7 @@
 return {
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
+    lazy = true,
     config = function()
       require("mason-tool-installer").setup({
         ensure_installed = {
@@ -36,7 +37,6 @@ return {
           "taplo",
           "tinymist",
           "tree-sitter-cli",
-          "ty",
           "vtsls",
           "yaml-language-server",
           "zls",
