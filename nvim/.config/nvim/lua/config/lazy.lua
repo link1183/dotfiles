@@ -58,3 +58,8 @@ vim.lsp.config["phpantom"] = {
   root_markers = { "composer.json", ".git" },
 }
 vim.lsp.enable("phpantom")
+
+vim.lsp.config["ty"] = {
+  settings = {},
+}
+vim.lsp.enable("ty")
