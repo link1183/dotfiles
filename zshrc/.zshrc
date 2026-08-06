@@ -170,7 +170,6 @@ img2png() {
     -define png:exclude-chunk=all \
     "${1%.*}-optimized.png"
 }
-eval "$(tv init zsh)"
 
 # pnpm
 export PNPM_HOME="/home/agunthe1/.local/share/pnpm"
@@ -184,8 +183,6 @@ export PATH=$PATH:$HOME/tizen-studio/tools/ide/bin
 export PATH=$PATH:$HOME/tizen-studio/tools
 export PATH=$PATH:$HOME/tizen-studio/package-manager
 
-eval "$(gtasks completion zsh)"
-eval "$(tv init zsh)"
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
