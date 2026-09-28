@@ -192,6 +192,8 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:/home/agunthe1/.cargo/bin:$PATH"
 
 export EDITOR=nvim
+
+. "$HOME/.local/share/../bin/env"
